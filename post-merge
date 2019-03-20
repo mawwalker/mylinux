@@ -1,0 +1,8 @@
+#!/bin/bash
+md_REPO=/home/git/ziyue.auto/notes
+hexo_dir=/home/git/hexo_notes/source/_posts
+rm -rf ${hexo_dir}/*
+cp -rf ${md_REPO}/* ${hexo_dir}
+cd /home/git/hexo_notes && hexo clean && hexo g
+rm -rf /var/www/notes/*
+cp -rf /home/git/hexo_notes/public/* /var/www/notes

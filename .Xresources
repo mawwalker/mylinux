@@ -1,0 +1,72 @@
+Xft.dpi: 125
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
+
+!!$HOME/.Xresources
+!!调整此处设置输入法
+URxvt.inputMethod:fcitx
+
+URxvt*depth: 32
+URxvt*background: [60]#000000
+URxvt*foreground:#ffffff
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+!!URL操作
+!!URxvt.urlLauncher:chromium
+!!URxvt.matcher.button:1
+!1Urxvt.perl-ext-common:matcher
+!!滚动条设置
+URxvt.scrollBar:False
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:3000
+!!边框
+URxvt.borderLess:False
+
+! Extensions
+URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
+URxvt.urlLauncher: xdg-open
+URxvt.urlButton: 1
+URxvt.underlineURLs: True
+
+!!URxvt.copyCommand:  xclip -i -selection clipboard
+!!URxvt.pasteCommand: xclip -o -selection clipboard
+
+! Keybindings
+!!URxvt.keysym.Mod2-c: perl:clipboard:copy
+!!URxvt.keysym.Mod2-v: perl:clipboard:paste
+!!URxvt.keysym.Mod2-C-v: perl:clipboard:paste_escaped
+!!URxvt.keysym.M-c: perl:clipboard:copy
+!!URxvt.keysym.M-v: perl:clipboard:paste
+!!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!!URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!!URxvt.keysym.C-Escape: perl:keyboard-select:activate
+!!URxvt.keysym.M-u: perl:url-select:select_next
+
+
+
+
+
+!!字体设置
+URxvt.font: xft:Lekton Nerd Font Mono:size=16
