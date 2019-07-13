@@ -1,0 +1,58 @@
+
+" python-mode 使用python3语法检查
+let g:pymode_python = 'python3'
+
+" Enable automatic virtualenv detection 自动检测python虚拟环境
+let g:pymode_virtualenv = 1
+
+" Check code when editing (on the fly)  编辑时显示错误
+let g:pymode_lint_on_fly = 0
+
+" Show error message if cursor placed at the error line 光标在错误代码上时，显示错误信息
+let g:pymode_lint_message = 1
+
+
+" *************************** debug
+"Enable functionality                                      *'g:pymode_breakpoint'*
+let g:pymode_breakpoint = 1
+
+" Bind keys
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" Manually set breakpoint command (leave empty for automatic detection)
+let g:pymode_breakpoint_cmd = ''
+" **************************
+
+" ************************** code高亮设置
+" Enable all python highlights  高亮显示
+let g:pymode_syntax_all = 1
+
+" Highlight 'self' keyword   
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+
+" Highlight indent's errors 缩进错误显示
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+
+" Highlight space's errors                         *'g:pymode_syntax_space_errors'*
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Highlight string formatting                 
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+" Highlight builtin objects (True, False, ...)     *'g:pymode_syntax_builtin_objs'*
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+
+" Highlight builtin types (str, list, ...)        *'g:pymode_syntax_builtin_types'*
+let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+
+" Highlight exceptions (TypeError, ValueError, ...)
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+
+" Highlight docstrings as pythonDocstring (otherwise as pythonString)
+let g:pymode_syntax_docstrings = g:pymode_syntax_all
+
+let g:pymode_lint_ignore = ["E501","E302","E262","E261","E265",]
+" *******************************

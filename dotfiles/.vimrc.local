@@ -63,7 +63,7 @@ func SetTitle()
 
         call append(line("."), "\# File Name: ".expand("%")) 
 
-        call append(line(".")+1, "\# Author: Dsm") 
+        call append(line(".")+1, "\# Author: Arch") 
 
         call append(line(".")+2, "\# Created Time: ".strftime("%c")) 
 
@@ -114,39 +114,33 @@ func SetTitle()
 endfunc 
 
 
-"C，C++ 按F5编译运行
+" Quick run via <F5>
+nnoremap <F5> :call <SID>compile_and_run()<CR>
 
-map <F5> :call CompileRunGcc()<CR>
-
-func! CompileRunGcc()
-
-    exec "w"
-
+function! s:compile_and_run()
+    exec 'w'
     if &filetype == 'c'
-
-        exec "!g++ % -o %<"
-
-        exec "! ./%<"
-
+        exec "AsyncRun! gcc % -o %<; time ./%<"
     elseif &filetype == 'cpp'
-
-        exec "!g++ % -o %<"
-
-        exec "! ./%<"
-
-    elseif &filetype == 'java' 
-
-        exec "!javac %" 
-
-        exec "!java %<"
-
+       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
+    elseif &filetype == 'java'
+       exec "AsyncRun! javac %; time java %<"
     elseif &filetype == 'sh'
-
-        :!./%
-
+       exec "AsyncRun! time bash %"
+    elseif &filetype == 'python'
+       exec "AsyncRun! time python %"
     endif
+endfunction
 
-endfunc
+" Deprecated:
+" augroup SPACEVIM_ASYNCRUN
+"     autocmd!
+"    " Automatically open the quickfix window
+"     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
+" augroup END
+"
+" asyncrun now has an option for opening quickfix automatically
+let g:asyncrun_open = 15
 
 "C,C++的调试
 
@@ -274,5 +268,11 @@ set completeopt=longest,menu
 hi MatchParen ctermbg=Yellow guibg=lightblue
 
 "nerdtree 切换tab快捷键
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+nnoremap <S-l> gt
+nnoremap <S-h> gT
+
+" 按下 F2 调出/隐藏 NERDTree
+map <F2> :silent! NERDTreeToggle<CR>
+
+" 当打开 NERDTree 窗口时，自动显示 Bookmarks
+let NERDTreeShowBookmarks=1

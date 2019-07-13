@@ -1,0 +1,110 @@
+general {
+    output_format = "i3bar"
+    colors = true
+    color_good = "#BBBBBB"
+    color_bad = "#CC1616"
+    color_degraded = "#55858E"
+    interval = 1
+}
+
+order +="window_title"
+order +="spotify"
+order += "sysdata"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "net_rate"
+order += "time"
+order += "volume_status"
+order +="backlight"
+order +="arch_updates"
+order +="battery_level"
+order +="keyboard_locks"
+
+
+window_title {
+    format = '[\?max_length=55 {title}|♥]'
+}
+
+spotify {
+    button_next = 4
+    button_play_pause = 1
+    button_previous = 5
+    format = "{title} by {artist} -> {time}"
+    format_down = "no Spotify"
+}
+
+sysdata {
+    format = "{mem_used}G/{mem_used_percent}%"
+    # on_click 1 = "exec nemo /"
+    color = "#48CCCD"
+}
+
+cpu_usage {
+    format = " %usage"
+    color = "#52D017"
+}
+
+cpu_temperature 0 {
+    format = "♨️ %degrees °C"
+    max_threshold = 65
+    path = "/sys/class/thermal/thermal_zone0/temp"
+    color = "#CCFB5D"
+}
+
+net_rate {
+    #interfaces = "enp5s0f1"
+    all_interfaces = "True"
+    format = " {down}{up}"
+    color = "#FFDB58"
+}
+
+time {
+    format = " %Y-%m-%d %H:%M:%S"
+    color = "#9E7BFF"
+}
+
+volume_status {
+    #format = "♪{percentage}%"
+    cache_timeout = 1
+    max_volume = 150
+    #device = "default"
+    command = "pamixer"
+    thresholds = [
+        (0, "#A0CFEC"),
+        (10, "#82CAFF"),
+        (20, "#79BAEC"),
+        (30, "#3BB9FF"),
+        (40, "#56A5EC"),
+        (50, "#5CB3FF"),
+        (60, "#1589FF"),
+        (70, "#157DEC"),
+        (80, "#306EFF"),
+        (90, "#2B65EC")
+    ]
+}
+
+backlight {
+    brightness_delta = 5
+    brightness_initial = 100
+    brightness_minimal = 10
+    command = 'light'
+
+}
+
+arch_updates {
+    format = " {pacman}/{aur}"
+    on_click 1 = "refresh"
+    color = "#00FF00"
+}
+
+battery_level {
+    format = "{percent}%"
+    format_notify_charging = "Charging ({percent}%)"
+    format_notify_discharging = "({percent}%)"
+    color = "#FF0000"
+}
+
+keyboard_locks {
+    format = '\?color=good [\?if=num_lock NUM][\?soft  ]'
+    format += '[\?if=caps_lock CAPS][\?soft  ][\?if=scroll_lock SCR]'
+}
