@@ -23,7 +23,7 @@ floating_modifier Mod1
 #######一些常见绑定
 #prt sc键进行选择性截屏，并且保存在~/Pictures/shot/目录下
 bindsym Print exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/shot'
-bindsym Shift+Print exec scrot '%Y-%m-%d_$wx$h.png' -s -e 'mv $f ~/Pictures/shot'
+bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/shot/%Y-%m-%d_$wx$h.png'
 
 #退出当前程序
 bindsym $mod+Shift+q kill
@@ -33,6 +33,9 @@ bindsym $mod+n exec nemo
 
 #打开chrome
 bindsym $mod+Shift+w exec google-chrome-stable
+
+# firefox
+bindsym $mod+Shift+f exec firefox
 
 # app finder
 bindsym mod1+F2 exec --no-startup-id xfce4-appfinder
@@ -88,7 +91,7 @@ exec --no-startup-id compton -b
 exec_always --no-startup-id fcitx
 
 #nemo 等文件管理器挂载磁盘时需要polkit
-exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 #去掉屏保功能，将黑屏等待时间置为100分钟
 exec --no-startup-id xset s 0
@@ -98,13 +101,14 @@ exec --no-startup-id xset dpms 6000 8000 9000
 for_window [class="URxvt"] layout tabbed
 
 #打开软件时自动移至相应工作区
-#assign [class="URxvt"] $WS1
-#assign [class="Thunar"] $WS1
-#assign [class="Firefox"] $WS2
-#assign [class="Shutter"] $WS3
-#assign [class="Gvim"] $WS4
+assign [class="terminator"] $WS1
+assign [class="nemo"] $WS3
+assign [class="google-chrome-stable"] $WS2
+assign [class="Gvim"] $WS4
 #assign [class="VirtualBox"] $WS5
 
+# 特定窗口设为浮动窗口
+for_window [class="MATLAB R2018a"] floating enable
 
 
 #**************************************焦点和窗口移动**************************************
@@ -322,6 +326,3 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec $volumepath/volume -np -i $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioLowerVolume exec $volumepath/volume -np -d $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioMute        exec $volumepath/volume -mn -t $statuscmd -u $statussig
-
-
-exec_always --no-startup-id ~/wallpapers.sh &
