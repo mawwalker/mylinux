@@ -71,13 +71,10 @@ local browser      = "google-chrome-stable"
 local guieditor    = "mousepad"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "", "", "", "", "", ""}
+awful.util.tagnames = { "", "", "", "", "", "", " ", ""}
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.tile,
     awful.layout.suit.floating,
-    awful.layout.suit.floating,
-    awful.layout.suit.magnifier,
+    awful.layout.suit.tile,
     awful.layout.suit.magnifier,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
@@ -86,9 +83,9 @@ awful.layout.layouts = {
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.magnifier,
     --awful.layout.suit.max,
     --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
     --awful.layout.suit.corner.nw,
     --awful.layout.suit.corner.ne,
     --awful.layout.suit.corner.sw,
@@ -216,7 +213,7 @@ root.buttons(my_table.join(
 -- {{{ Key bindings
 globalkeys = my_table.join(
     -- Take a screenshot
-    awful.key({                  }, "Print", function() awful.spawn.with_shell("flameshot gui -p ~/Media/picture/screenshots/") end,
+    awful.key({                  }, "Print", function() awful.spawn.with_shell("flameshot gui -p ~/Pictures/shot/") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
@@ -347,7 +344,7 @@ globalkeys = my_table.join(
               {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc( -1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
@@ -732,3 +729,4 @@ awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-
 awful.spawn.with_shell("mate-power-manager")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("fcitx")
+awful.spawn.with_shell("wallpaper")
