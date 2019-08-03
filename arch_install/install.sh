@@ -8,10 +8,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # nvidia-pacman hook
 mkdir -p /etc/pacman.d/hooks/ && cp nvidia.hook /etc/pacman.d/hooks/ && mkinitcpio -P
 cp xorg.conf /etc/X11/
-# gdm nvidia-prime
-cp optimus.desktop /usr/share/gdm/greeter/autostart/
-cp optimus.desktop /etc/xdg/autostart/
-systemctl enable gdm
+
+# lightdm nvidia-prime
+cp display_setup.sh /etc/lightdm/display_setup.sh 
+chmod +x /etc/lightdm/display_setup.sh
+mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
+cp lightdm.conf /etc/lightdm/lightdm.conf
+systemctl enable lightdm
 
 # nvidia prime configuration
 cp nvidia-drm-modeset.conf /etc/modprobe.d/
