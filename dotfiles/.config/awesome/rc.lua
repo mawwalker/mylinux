@@ -57,7 +57,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root" }) -- entries must be separated by commas
+--run_once({ "urxvtd", "unclutter -root" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -85,7 +85,7 @@ local guieditor    = "code"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = {  "", "", "", "", "", "", " ", "" }
+awful.util.tagnames = {  "", "", "", "", "", "", "", "" }
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -775,3 +775,4 @@ awful.spawn.with_shell("mate-power-manager")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("fcitx")
 awful.spawn.with_shell("wallpaper")
+awful.spawn.with_shell("/usr/lib/gsd-xsettings")

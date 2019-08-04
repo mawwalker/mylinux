@@ -120,9 +120,9 @@ local mailicon = wibox.widget.imagebox(theme.widget_mail)
 mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
 theme.mail = lain.widget.imap({
     timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
+    server   = "",
+    mail     = "",
+    password = "",
     settings = function()
         if mailcount > 0 then
             widget:set_markup(markup.font(theme.font, " " .. mailcount .. " "))
@@ -271,7 +271,7 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+    awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
