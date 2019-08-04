@@ -32,7 +32,7 @@ Variable | Meaning | Type | Default
 `port` | MPD port | string | "6600"
 `music_dir` | Music directory | string | "~/Music"
 `cover_size` | Album art notification size (both height and width) | integer | 100
-`cover_pattern` | Pattern for the album art file | string | `*\\.(jpg|jpeg|png|gif)`*
+`cover_pattern` | Pattern for the album art file | string | `*.(jpg\|jpeg\|png\|gif)$`
 `default_art` | Default art | string | `nil`
 `notify` | Show notification popups | string | "on"
 `followtag` | Notification behaviour | boolean | false
@@ -144,6 +144,14 @@ awful.key({ altkey }, "0",
 ```
 
 ## Notes
+
+### Cover not showing in notifications
+
+If the cover file is existent but not showed in notifications, [try](https://github.com/lcpz/lain/issues/393) setting `music_dir` to a symlink of your music folder, rather than to a physical path. This can be easily done through
+```shell
+ln -s /the/real_path_to_your_music/ /home/username/Music
+```
+However, this only applies if the music is stored outside your user-specific folder, for instance in an external partition.
 
 ### Always use `set_markup`
 

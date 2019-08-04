@@ -16,8 +16,10 @@ Variable | Meaning | Type | Default
 --- | --- | --- | ---
 `timeout` | Refresh timeout (in seconds) | integer | 5
 `settings` | User settings | function | empty function
-`width` | Bar width | integer | 63
-`height` | Bar height | integer | 1
+`width` | Bar width | number | 63
+`height` | Bar height | number | 1
+`margins` | Bar margins | number | 1
+`paddings` | Bar paddings | number | 1
 `ticks` | Set bar ticks on | boolean | false
 `ticks_size` | Ticks size | integer | 7
 `cmd` | ALSA mixer command | string | "amixer"
@@ -27,7 +29,7 @@ Variable | Meaning | Type | Default
 `notification_preset` | Notification preset | table | See [default `notification_preset`](https://github.com/lcpz/lain/wiki/alsabar#default-notification_preset)
 `followtag` | Display the notification on currently focused screen | boolean | false
 
-`cmd` is useful if you need to pass additional arguments to  `amixer`. For instance, you may want to define `command = "amixer -c X"` in order to set amixer with card `X`.
+`cmd` is useful if you need to pass additional arguments to  `amixer`. For instance, you may want to define `cmd = "amixer -c X"` in order to set amixer with card `X`.
 
 In case mute toggling can't be mapped to master channel (this happens, for instance, when you are using an HDMI output), define `togglechannel` as your S/PDIF device. Read [`alsa`](https://github.com/lcpz/lain/wiki/alsa#toggle-channel) page to know how.
 
@@ -77,19 +79,19 @@ volume.bar:buttons(awful.util.table.join(
         awful.spawn(string.format("%s -e alsamixer", terminal))
     end),
     awful.button({}, 2, function() -- middle click
-        awful.spawn(string.format("%s set %s 100%%", volume.cmd, volume.channel))
+        os.execute(string.format("%s set %s 100%%", volume.cmd, volume.channel))
         volume.update()
     end),
     awful.button({}, 3, function() -- right click
-        awful.spawn(string.format("%s set %s toggle", volume.cmd, volume.togglechannel or volume.channel))
+        os.execute(string.format("%s set %s toggle", volume.cmd, volume.togglechannel or volume.channel))
         volume.update()
     end),
     awful.button({}, 4, function() -- scroll up
-        awful.spawn(string.format("%s set %s 1%%+", volume.cmd, volume.channel))
+        os.execute(string.format("%s set %s 1%%+", volume.cmd, volume.channel))
         volume.update()
     end),
     awful.button({}, 5, function() -- scroll down
-        awful.spawn(string.format("%s set %s 1%%-", volume.cmd, volume.channel))
+        os.execute(string.format("%s set %s 1%%-", volume.cmd, volume.channel))
         volume.update()
     end)
 ))

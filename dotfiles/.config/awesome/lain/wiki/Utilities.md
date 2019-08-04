@@ -170,9 +170,17 @@ Useless gaps resize
 
 Changes `beautiful.useless_gaps` on the fly.
 
-The function takes an integer argument, being the amount of pixel to add/remove to gaps.
+```lua
+lain.util.useless_gap_resize(thatmuch, s, t)
+```
 
-You could use it with these keybindings:
+The argument `thatmuch` is the number of pixel to add to/substract from gaps (integer).
+
+The arguments `s` and `t` are the `awful.screen` and `awful.tag` in which you want to change the gap. They are optional.
+
+Following are example keybindings for changing client gaps on current screen and tag.
+
+Example 1:
 
 ```lua
 -- On the fly useless gaps change
@@ -180,7 +188,7 @@ awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(
 awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 ```
 
-where `altkey = Mod1`, or you could use it like this:
+where `altkey = Mod1`. Example 2:
 
 ```lua
 mywidget:buttons(awful.util.table.join (
@@ -253,7 +261,7 @@ configuration to apply to X with `xrandr`, as suggested on the [Awesome wiki pag
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/4147254/36317474-3027f8b6-130b-11e8-9b6b-9a2cf55ae841.gif"/>
-    <br>An example XRandR menu, courtesy of <a href="https://github.com/sim590/dotfiles/blob/master/awesome/rc/xrandr.lua">sim590</a>
+    <br>An example Synergy menu, courtesy of <a href="https://github.com/sim590/dotfiles/blob/master/awesome/rc/xrandr.lua">sim590</a>
 </p>
 
 You can either manually create a menu by defining a table in this format:
@@ -262,7 +270,7 @@ You can either manually create a menu by defining a table in this format:
 { { "choice description 1", callbackFuction1 }, { "choice description 2", callbackFunction2 }, ... }
 ```
 
-or use `util.menu_iterator.menu`. Once you have your menu, use it with `lain.menu_iterator.iterate`.
+or use `lain.util.menu_iterator.menu`. Once you have your menu, use it with `lain.menu_iterator.iterate`.
 
 ### Input tables
 
