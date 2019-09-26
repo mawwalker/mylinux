@@ -85,7 +85,7 @@ local guieditor    = "code"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = {  "", "", "", "", "", "", "", "" }
+awful.util.tagnames = {  " ", " ", " ", " ", " ", " ", " ", " " }
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -757,9 +757,9 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = true})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = true})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
@@ -770,9 +770,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --auto run
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+awful.spawn.with_shell("/usr/libexec/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("mate-power-manager")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("fcitx")
 awful.spawn.with_shell("wallpaper")
-awful.spawn.with_shell("/usr/lib/gsd-xsettings")
+--awful.spawn.with_shell("/usr/lib/gsd-xsettings")
