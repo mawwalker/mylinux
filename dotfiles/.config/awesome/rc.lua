@@ -773,9 +773,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --auto run
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+awful.spawn.with_shell("/usr/libexec/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("mate-power-manager")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("fcitx")
 awful.spawn.with_shell("wallpaper")
-awful.spawn.with_shell("/usr/lib/gsd-xsettings")
+--awful.spawn.with_shell("/usr/lib/gsd-xsettings")
