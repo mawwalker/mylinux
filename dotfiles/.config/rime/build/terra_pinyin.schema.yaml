@@ -1,10 +1,15 @@
 __build_info:
-  rime_version: 1.5.3
+  rime_version: 1.7.3
   timestamps:
-    default: 1526362370
+    default: 1612771620
     default.custom: 0
+    grammar: 0
+    key_bindings: 1612771620
+    key_bindings.custom: 0
+    punctuation: 1612771620
+    punctuation.custom: 0
     terra_pinyin.custom: 0
-    terra_pinyin.schema: 1526362370
+    terra_pinyin.schema: 1612191962
 custom_phrase:
   db_class: stabledb
   dictionary: ""
@@ -49,6 +54,7 @@ key_binder:
     - {accept: "Control+h", send: BackSpace, when: composing}
     - {accept: "Control+g", send: Escape, when: composing}
     - {accept: "Control+bracketleft", send: Escape, when: composing}
+    - {accept: "Control+y", send: Page_Up, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
     - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
@@ -68,8 +74,6 @@ key_binder:
     - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
     - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
     - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
-    - {accept: "Shift+space", toggle: full_shape, when: always}
-    - {accept: "Control+period", toggle: ascii_punct, when: always}
     - {accept: minus, send: minus, when: has_menu}
     - {accept: minus, send: Page_Up, when: paging}
   import_preset: default
@@ -200,10 +204,9 @@ schema:
     
   name: "地球拼音"
   schema_id: terra_pinyin
-  version: 0.19
+  version: 0.20
 speller:
   algebra:
-    - "erase/^xx$/"
     - "xform/^r5$/er5/"
     - "abbrev/^([a-z]).+$/$1/"
     - "abbrev/^([zcs]h).+$/$1/"
