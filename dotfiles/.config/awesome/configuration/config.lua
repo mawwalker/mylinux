@@ -31,7 +31,7 @@ return {
 
 		clock = {
 			-- Clock widget format
-			military_mode = false
+			military_mode = true
 		},
 
 		screen_recorder = {
