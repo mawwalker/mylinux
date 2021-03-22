@@ -6,7 +6,7 @@ return {
 	-- The default applications that we will use in keybindings and widgets
 	default = {
 		-- Default terminal emulator
-		terminal = 'terminator',
+		terminal = 'urxvt',
 		-- Default web browser
 		web_browser = 'firefox',
 		-- Default text editor
@@ -16,7 +16,7 @@ return {
 		-- Default media player
 		multimedia = 'vlc',
 		-- Default game, can be a launcher like steam
-		game = 'steam',
+		game = 'nemo',
 		-- Default graphics editor
 		graphics = 'gimp',
 		-- Default sandbox
@@ -24,7 +24,7 @@ return {
 		-- Default IDE
 		development = 'code',
 		-- Default network manager
-		network_manager = 'kitty iwctl',
+		network_manager = 'nm-applet',
 		-- Default bluetooth manager
 		bluetooth_manager = 'blueman-manager',
 		-- Default power manager
@@ -56,9 +56,11 @@ return {
 		config_dir .. '/configuration/picom.conf',
 		-- Blueman applet
 		'blueman-applet',
+        'nm-applet',
+        'fcitx',
+        'sunloginclient',
 		-- Music server
 		'mpd',
-        'fcitx',
 		-- Polkit and keyring
 		'/usr/bin/lxqt-policykit-agent &' ..
 		' eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)',

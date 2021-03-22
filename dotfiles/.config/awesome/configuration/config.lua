@@ -6,7 +6,7 @@ return {
 			-- App password
 			app_password = '',
 			-- Imap server
-			imap_server = 'imap.gmail.com',
+			imap_server = 'outlook.office365.com',
 			-- Port
 			port = '993'
 		},
@@ -24,9 +24,9 @@ return {
 
 		network = {
 			-- Wired interface
-			wired_interface = 'enp5s0f1',
+			wired_interface = 'enp5s0',
 			-- Wireless interface
-			wireless_interface = 'wlp4s0'
+			wireless_interface = 'wlp0s20u5'
 		},
 
 		clock = {
@@ -36,17 +36,17 @@ return {
 
 		screen_recorder = {
 			-- Default record dimension
-			resolution = '1366x768',
+			resolution = '1920x1080',
 			-- X,Y coordinate
 			offset = '0,0',
 			-- Enable audio by default
-			audio = false,
+			audio = true,
 			-- Recordings directory
 			save_directory = '$(xdg-user-dir VIDEOS)/Recordings/',
 			-- Mic level
 			mic_level = '20',
 			-- FPS
-			fps = '30'
+			fps = '60'
 		}
 	},
 

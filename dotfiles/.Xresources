@@ -1,72 +1,50 @@
-Xft.dpi: 125
-Xft.autohint: 0
-Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
+URxvt.background:	#1F1D19
+URxvt.foreground:	#DEDEDE
+!URxvt.transparent: true
+URxvt.font:			xft:DroidSansMono Nerd Font Mono:pixelsize=14:antialias=true:hinting=true
+URxvt.boldFont:		xft:DroidSansMono Nerd Font Mono:bold:pixelsize=14:antialias=true:hinting=true
+URxvt.scrollBar:	false
+URxvt.saveLines:	65535
+URxvt.perl-ext-common: keyboard-select,url-select,clipboard
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+Xft*dpi:       96
+Xft*antialias: True
+Xft*hinting:   Full
+URxvt.keysym.KP_Add:    +
+URxvt.keysym.KP_Subtract: -
+URxvt.keysym.KP_Multiply: *
+URxvt.keysym.KP_Divide  : /
+URxvt.keysym.KP_Decimal : .
+URxvt.keysym.KP_Separator : ,
+URxvt.keysym.KP_1:      1
+URxvt.keysym.KP_2:      2
+URxvt.keysym.KP_3:      3
+URxvt.keysym.KP_4:      4
+URxvt.keysym.KP_5:      5
+URxvt.keysym.KP_6:      6
+URxvt.keysym.KP_7:      7
+URxvt.keysym.KP_8:      8
+URxvt.keysym.KP_9:      9
+URxvt.keysym.KP_0:      0
 
-
-
-!!$HOME/.Xresources
-!!调整此处设置输入法
-URxvt.inputMethod:fcitx
-
-URxvt*depth: 32
-URxvt*background: [60]#000000
-URxvt*foreground:#ffffff
-URxvt.colorBD:Gray95
-URxvt.colorUL:Green
-URxvt.color1:Red2
-URxvt.color4:RoyalBlue
-URxvt.color5:Magenta2
-URxvt.color8:Gray50
-URxvt.color10:Green2
-URxvt.color12:DodgerBlue
-URxvt.color14:Cyan2
-URxvt.color15:Gray95
-!!URL操作
-!!URxvt.urlLauncher:chromium
-!!URxvt.matcher.button:1
-!1Urxvt.perl-ext-common:matcher
-!!滚动条设置
-URxvt.scrollBar:False
-URxvt.scrollBar_floating:False
-URxvt.scrollstyle:plain
-!!滚屏设置
-URxvt.mouseWheelScrollPage:True
-URxvt.scrollTtyOutput:False
-URxvt.scrollWithBuffer:True
-URxvt.scrollTtyKeypress:True
-!!光标闪烁
-URxvt.cursorBlink:True
-URxvt.saveLines:3000
-!!边框
-URxvt.borderLess:False
-
-! Extensions
-URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
-URxvt.urlLauncher: xdg-open
-URxvt.urlButton: 1
-URxvt.underlineURLs: True
-
-!!URxvt.copyCommand:  xclip -i -selection clipboard
-!!URxvt.pasteCommand: xclip -o -selection clipboard
-
-! Keybindings
-!!URxvt.keysym.Mod2-c: perl:clipboard:copy
-!!URxvt.keysym.Mod2-v: perl:clipboard:paste
-!!URxvt.keysym.Mod2-C-v: perl:clipboard:paste_escaped
-!!URxvt.keysym.M-c: perl:clipboard:copy
-!!URxvt.keysym.M-v: perl:clipboard:paste
-!!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-!!URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!!URxvt.keysym.C-Escape: perl:keyboard-select:activate
-!!URxvt.keysym.M-u: perl:url-select:select_next
-
-
-
-
-
-!!字体设置
-URxvt.font: xft:Lekton Nerd Font Mono:size=16
+*color0:  #2E3436
+*color1:  #a40000
+*color2:  #4E9A06
+*color3:  #C4A000
+*color4:  #3465A4
+*color5:  #75507B
+*color6:  #ce5c00
+*color7:  #babdb9
+*color8:  #555753
+*color9:  #EF2929
+*color10: #8AE234
+*color11: #FCE94F
+*color12: #729FCF
+*color13: #AD7FA8
+*color14: #fcaf3e
+*color15: #EEEEEC

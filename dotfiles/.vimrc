@@ -1,25 +1,211 @@
-"   .  . .  .  . .  . S@t.. .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  ..
-"    .     ..t%SXSS%:;t.X8S% .   .      .       .       .       .       .       .       .       .       .       .       .
-"      . %St8;8:X;8:8:8%8;%%:@S:    . .    . .    ....    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  ....
-"  .    8: %.;t;S;%@88:X.8X8%;8S t@@%   .  %@@t  .X88X .      .       .   %@@@@@@@@@X:  .     .       .       .       .  
-"    ..X.;X%8t8%8ttX.88;8.8%:;% ;8:SX%.   SX.8S.  St88:  .  .   .  .    ..XS.@%SSS88S@:. X@@%  . . .    .  .    .  ......
-"   . X;:;8SS888;8tt;8:8:8; t:t8S 8:Xt.  :8888: .%888:.  .SSSSSSSSSSS%:  .S888t   @@8X: .%.88  .SSt  .:SS;  .%SSSSSSSS%. 
-"    :t8 :;X8S;8.8S;8S.8.t8:%8XS.. S8.8:.S8;8;  :@;@88 . S:88 X.88@88:@t..%S.  .. X;8@: :%:;8. X%:X;. 8;.;  %S8@XXSXSS8..
-"  .t88; X;8S8888;8S8t 8S88SSStt:. @.%8St;@8X  . t .8S   S:88:%888%;8t8:..S.S@%SSS8S88t .% @;  X:.X.  88t :.t@t8@ .......
-"  8; :888XSStS;88;88X%;;tt::;;8@ ..%X88:88Xt    .S@.::. S@8% X8.@;S888X .%;88SSSS.SX.:. 8S88: @;88t. 8.S8  t;@8@88@88S..
-"  S. :tX: ;%8S8 : .::. %8t  %S 8.  @88t8 8t.  . . .@8;  8888 @@%S;t8.8S .:SX8; .:.... . S8; ..8888:..8:8@: ;St@@888.@@..
-"    :8:;888888 .; .     8%8@       .8X.@8X  .    X%8@  .t@8S X88X:%888X .@8@8t  ..  .   SX%X .X;;S@%tS8; ;..SttSXS8888S.
-"    t.8XX;;8X% XX.  .    %8X8;   . :tX8@t     .  t8X8:  %@@S X8@@:t8tXt...:%t..       . X:8X  X8@@88@888t. %88t888 888t.
-"  .    :8;S: . S@.       t8;8:: .   .;:;. . .   .%@%:   t%%; .%%;..: t. .;  :  . . .    %;8.  ;X;X%.:.: t  ;t  ;:: :t;..
-"     :%@t%8   88.  .  .  :: . ..   .   .          .   . ..  .      ..   .    .       . . ... .   . .   .        ..      
-"      .. 8888   ..      ...   . .    .   .  . .     .   ..    .  .    .        .   .   . ..    .  .  .   .  . .     ....
-"
-" Author: chxuan <787280310@qq.com>
-" Repository: https://github.com/chxuan/vimplus
-" Create Date: 2016-04-10
-" License: MIT
+" vim-plug plugs
+call plug#begin('~/.vim/plugged')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'junegunn/vim-plug'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'lilydjwg/fcitx.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'majutsushi/tagbar'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'kshenoy/vim-signature'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator'
+Plug 'mhinz/vim-signify'
+Plug 'majutsushi/tagbar'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mbbill/undotree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-repeat'
+Plug 'puremourning/vimspector'
+
+
+" python-mode插件
+let g:pymode_lint_ignore = ["E501","E302","E262","E261","E265",]
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+let g:pymode_python = 'python3'
+call plug#end()
+
+" 个性化设置
+"nerdtree 切换tab快捷键
+nnoremap <S-l> gt
+nnoremap <S-h> gT
+" 按下 F2 调出/隐藏 NERDTree
+map <F2> :silent! NERDTreeToggle<CR>
+" 当打开 NERDTree 窗口时，自动显示 Bookmarks
+let NERDTreeShowBookmarks=1
+
+" vimspector 插件配置
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+
+
+" 设置自动缩进
+set smartindent
+" 括号补全
+""inoremap ' ''<ESC>i
+""inoremap " ""<ESC>i
+""inoremap ( ()<ESC>i
+""inoremap [ []<ESC>i
+""inoremap { {<CR>}<ESC>O
+" *.cpp 和 *.h 间切换
+nmap <silent> <Leader>sw :FSHere<cr>
+" 刷新时间
+set updatetime=100
+" 打开文件时，光标定位到上次打开的位置
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" 代码重叠
+" 基于缩进或语法进行代码折叠
+"set foldmethod=indent
+set foldmethod=syntax
+" 启动 vim 时关闭折叠代码
+set nofoldenable
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+set mouse=a
+
+" F5快速运行
+"map <F5> :call CompileRunGcc()<CR>
+"func! CompileRunGcc()
+    "exec "w" 
+    "if &filetype == 'c' 
+        "exec '!g++ % -o %<'
+        "exec '! ./%<'
+    "elseif &filetype == 'cpp'
+        "exec '!g++ % -o %<'
+        "exec '! ./%<'
+    "elseif &filetype == 'python'
+        "exec '!python %'
+    "elseif &filetype == 'sh'
+        ":!bash %
+    "endif                                                                              
+"endfunc 
+
+" F6编译c/c++并启动gdb调试
+"map <F6> :call CompileDebug()<CR>
+"func! CompileDebug()
+    "exec "w"
+    "if &filetype == 'c'
+        "exec '!g++ -g % -o %<'
+        ":packadd termdebug
+        ":Termdebug
+    "elseif &filetype == 'cpp'
+        "exec '!g++ -g % -o %<'
+        ":packadd termdebug
+        ":Termdebug
+    "endif
+"endfunc
+
+" F7编译c/c++
+map <F7> :call CompileDebug()<CR>
+func! CompileDebug()
+    exec "w"
+    if &filetype == 'c'
+        exec '!g++ -g % -o %<'
+    elseif &filetype == 'cpp'
+        exec '!g++ -g % -o %<'
+    endif
+endfunc
+
+
+" 主题
+set background=dark
+let g:onedark_termcolors=256
+colorscheme molokai
+" 定义快捷键的前缀，即<Leader>
+let mapleader=","
+" 开启文件类型侦测
+filetype on
+" 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+" 定义快捷键到行首和行尾
+nmap LB 0
+nmap LE $
+" 设置快捷键将选中文本块复制至系统剪贴板
+vnoremap <Leader>y "+y
+" 设置快捷键将系统剪贴板内容粘贴至 vim
+nmap <Leader>p "+p
+" 定义快捷键关闭当前分割窗口
+nmap <Leader>q :q<CR>
+" 定义快捷键保存当前窗口内容
+nmap <Leader>w :w<CR>
+" 定义快捷键保存所有窗口内容并退出 vim
+nmap <Leader>WQ :wa<CR>:q<CR>
+" 不做任何保存，直接退出 vim
+nmap <Leader>Q :qa!<CR>
+" 依次遍历子窗口
+nnoremap nw <C-W><C-W>
+" 跳转至右方的窗口
+nnoremap <C-l> <C-W>l
+" 跳转至左方的窗口
+nnoremap <C-h> <C-W>h
+" 跳转至上方的子窗口
+nnoremap <C-k> <C-W>k
+" 跳转至下方的子窗口
+nnoremap <C-j> <C-W>j
+" 定义快捷键在结对符之间跳转
+nmap <Leader>M %
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" 开启实时搜索功能
+set incsearch
+" 搜索时大小写不敏感
+set ignorecase
+" 关闭兼容模式
+set nocompatible
+" vim 自身命令行模式智能补全
+set wildmenu
+" 总是显示状态栏
+set laststatus=2
+" 显示光标当前位置
+set ruler
+" 开启行号显示
+set number
+" 高亮显示当前行/列
+set cursorline
+" 高亮显示搜索结果
+set hlsearch
+" 禁止折行
+set nowrap
+" 开启语法高亮功能
+syntax enable
+" 允许用指定语法高亮配色方案替换默认方案
+syntax on
+" 自适应不同语言的智能缩进
+filetype indent on
+" 将制表符扩展为空格
+set expandtab
+" 设置编辑时制表符占用空格数
+set tabstop=4
+" 设置格式化时制表符占用空格数
+set shiftwidth=4
+" 让 vim 把连续数量的空格视为一个制表符
+set softtabstop=4
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 设置环境保存项
+set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
+" 保存 undo 历史
+set undodir=~/.undo_history/
+set undofile
+" 保存快捷键
+map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
+" 恢复快捷键
+map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
+
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","      " 定义<leader>键
@@ -27,51 +213,17 @@ set nocompatible         " 设置不兼容原始vi模式
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
 set noeb                 " 关闭错误的提示
-syntax enable            " 开启语法高亮功能
-syntax on                " 自动语法高亮
 set t_Co=256             " 开启256色支持
 set cmdheight=2          " 设置命令行的高度
 set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
-set number               " 开启行号显示
-set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 代码缩进和排版
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set autoindent           " 设置自动缩进
-set cindent              " 设置使用C/C++语言的自动缩进方式
-set cinoptions=g0,:0,N-s,(0    " 设置C/C++语言的具体缩进方式
-set smartindent          " 智能的选择对其方式
-filetype indent on       " 自适应不同语言的智能缩进
-set expandtab            " 将制表符扩展为空格
-set tabstop=4            " 设置编辑时制表符占用空格数
-set shiftwidth=4         " 设置格式化时制表符占用空格数
-set softtabstop=4        " 设置4个空格为制表符
-set smarttab             " 在行和段开始处使用制表符
-set nowrap               " 禁止折行
-set backspace=2          " 使用回车键正常处理indent,eol,start等
-set sidescroll=10        " 设置向右滚动字符数
-set nofoldenable         " 禁用折叠代码
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 代码补全
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu             " vim自身命名行模式智能补全
-set completeopt-=preview " 补全时不显示窗口，只显示补全列表
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 搜索设置
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hlsearch            " 高亮显示搜索结果
-set incsearch           " 开启实时搜索功能
-set ignorecase          " 搜索时大小写不敏感
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 缓存设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup            " 设置不备份
@@ -90,106 +242,10 @@ set encoding=utf8
 set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gvim/macvim设置
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plug settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-    set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18 " 设置字体
-    set guioptions-=m           " 隐藏菜单栏
-    set guioptions-=T           " 隐藏工具栏
-    set guioptions-=L           " 隐藏左侧滚动条
-    set guioptions-=r           " 隐藏右侧滚动条
-    set guioptions-=b           " 隐藏底部滚动条
-    set showtabline=0           " 隐藏Tab栏
-    set guicursor=n-v-c:ver5    " 设置光标为竖线
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 插件列表
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
-
-Plug 'chxuan/cpp-mode'
-Plug 'chxuan/vim-edit'
-Plug 'chxuan/change-colorscheme'
-Plug 'chxuan/prepare-code'
-Plug 'chxuan/vim-buffer'
-Plug 'chxuan/vimplus-startify'
-Plug 'chxuan/tagbar'
-Plug 'Valloric/YouCompleteMe'
-Plug 'Yggdroot/LeaderF'
-Plug 'mileszs/ack.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-endwise'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/vim-slash'
-Plug 'junegunn/gv.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-syntax'
-Plug 'kana/vim-textobj-function'
-Plug 'sgur/vim-textobj-parameter'
-Plug 'Shougo/echodoc.vim'
-Plug 'terryma/vim-smooth-scroll'
-Plug 'rhysd/clever-f.vim'
-Plug 'rhysd/github-complete.vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'CodeFalling/fcitx-vim-osx'
-Plug 'scrooloose/nerdcommenter'
-" python-mode插件
-let g:pymode_lint_ignore = ["E501","E302","E262","E261","E265",]
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
-call plug#end()            
-
-" load vim default plugin
-runtime macros/matchit.vim
-
-" 编辑vimrc文件
-nnoremap <leader>e :edit $MYVIMRC<cr>
-
-" 查看vimplus的help文件
-nnoremap <leader>h :edit ~/.vimplus/help.md<cr>
-
-" 打开当前光标所在单词的vim帮助文档
-nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
-
-" 重新加载vimrc文件
-nnoremap <leader>s :source $MYVIMRC<cr>
-
-" 安装、更新、删除插件
-nnoremap <leader><leader>i :PlugInstall<cr>
-nnoremap <leader><leader>u :PlugUpdate<cr>
-nnoremap <leader><leader>c :PlugClean<cr>
-
-" 分屏窗口移动
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" 打开文件自动定位到最后编辑的位置
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
-
-" 主题
-set background=dark
-let g:onedark_termcolors=256
-colorscheme onedark
-
 " airline
 let g:airline_theme="onedark"
 let g:airline_powerline_fonts = 1
@@ -202,161 +258,115 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-" cpp-mode
-nnoremap <leader>y :CopyCode<cr>
-nnoremap <leader>p :PasteCode<cr>
-nnoremap <leader>U :GoToFunImpl<cr>
-nnoremap <silent> <leader>a :Switch<cr>
-nnoremap <leader><leader>fp :FormatFunParam<cr>
-nnoremap <leader><leader>if :FormatIf<cr>
-
-" change-colorscheme
-nnoremap <silent> <F9> :PreviousColorScheme<cr>
-inoremap <silent> <F9> <esc> :PreviousColorScheme<cr>
-nnoremap <silent> <F10> :NextColorScheme<cr>
-inoremap <silent> <F10> <esc> :NextColorScheme<cr>
-nnoremap <silent> <F11> :RandomColorScheme<cr>
-inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
-nnoremap <silent> <F12> :ShowColorScheme<cr>
-inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
-
-" prepare-code
-let g:prepare_code_plugin_path = expand($HOME . "/.vim/plugged/prepare-code")
-
-" vim-buffer
-nnoremap <silent> <c-p> :PreviousBuffer<cr>
-nnoremap <silent> <c-n> :NextBuffer<cr>
-nnoremap <silent> <leader>d :CloseBuffer<cr>
-nnoremap <silent> <leader>D :BufOnly<cr>
-
-" vim-edit
-nnoremap Y :CopyText<cr>
-nnoremap D :DeleteText<cr>
-nnoremap C :ChangeText<cr>
-nnoremap <leader>r :ReplaceTo<space>
-
 " nerdtree
 nnoremap <silent> <leader>n :NERDTreeToggle<cr>
 inoremap <silent> <leader>n <esc> :NERDTreeToggle<cr>
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeHighlightFolders = 1         
-let g:NERDTreeHighlightFoldersFullName = 1 
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▷'
 let g:NERDTreeDirArrowCollapsible='▼'
 
+" vim-indent-guides
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关缩进可视化
+:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+
+" vim-signature
+let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'PlaceNextMark'      :  "m,",
+        \ 'ToggleMarkAtLine'   :  "m.",
+        \ 'PurgeMarksAtLine'   :  "m-",
+        \ 'DeleteMark'         :  "dm",
+        \ 'PurgeMarks'         :  "mda",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "mn",
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextMarker'     :  "[+",
+        \ 'GotoPrevMarker'     :  "[-",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListLocalMarks'     :  "ms",
+        \ 'ListLocalMarkers'   :  "m?"
+        \ }
+
 " YCM
-let g:ycm_confirm_extra_conf = 0 
-let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '✹'
-let g:ycm_seed_identifiers_with_syntax = 1 
-let g:ycm_complete_in_comments = 1 
-let g:ycm_complete_in_strings = 1 
-let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_python_binary_path = 'python'
-nnoremap <leader>u :YcmCompleter GoToDeclaration<cr>
-" 已经使用cpp-mode插件提供的转到函数实现的功能
-" nnoremap <leader>i :YcmCompleter GoToDefinition<cr> 
-nnoremap <leader>o :YcmCompleter GoToInclude<cr>
-nnoremap <leader>ff :YcmCompleter FixIt<cr>
-nmap <F5> :YcmDiags<cr>
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
+" 补全功能在注释中同样有效
+let g:ycm_complete_in_comments=1
+" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+let g:ycm_confirm_extra_conf=0
+" 开启 YCM 标签补全引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+" 引入 C++ 标准库tags
+set tags+=/data/misc/software/misc./vim/stdcpp.tags
+" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+inoremap <leader>; <C-x><C-o>
+" 补全内容不以分割子窗口形式出现，只显示补全列表
+set completeopt-=preview
+" 从第一个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+" 语法关键字补全			
+let g:ycm_seed_identifiers_with_syntax=1
 
-" ctags
-set tags+=/usr/include/tags
-set tags+=~/.vim/systags
-set tags+=~/.vim/x86_64-linux-gnu-systags
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.','re![_a-zA-z0-9]'],
-  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \             're!\[.*\]\s'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::','re![_a-zA-Z0-9]'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \ }
-let g:ycm_semantic_triggers.c = ['->', '.', ' ', '(', '[', '&',']']
+" Tagbar
+map <F3> :TagbarToggle<CR>
 
-" tagbar
-let g:tagbar_width = 30
-nnoremap <silent> <leader>t :TagbarToggle<cr>
-inoremap <silent> <leader>t <esc> :TagbarToggle<cr>
+" vim-multiple-cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
-" incsearch.vim
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" undotree
+nnoremap <Leader>u :UndotreeToggle<cr>
 
-" markdown
-let uname = system('uname -s')
-if uname == "Darwin\n"
-    let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
-else
-    let g:mkdp_path_to_chrome = '/usr/bin/google-chrome-stable %U'
-endif
-nmap <silent> <F7> <Plug>MarkdownPreview
-imap <silent> <F7> <Plug>MarkdownPreview
-nmap <silent> <F8> <Plug>StopMarkdownPreview
-imap <silent> <F8> <Plug>StopMarkdownPreview
+" rainbow
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'lisp': {
+	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
 
-" vim-easymotion
-let g:EasyMotion_smartcase = 1
-map <leader>w <Plug>(easymotion-bd-w)
-nmap <leader>w <Plug>(easymotion-overwin-w)
-
-" nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-
-" LeaderF
-nnoremap <leader>f :LeaderfFile ~<cr>
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-            \}
-let g:Lf_UseCache = 0
-
-" ack
-nnoremap <leader>F :Ack!<space>
-
-" echodoc.vim
-let g:echodoc_enable_at_startup = 1
-
-" tabular
-nnoremap <leader>l :Tab /\|<cr>
-nnoremap <leader>= :Tab /=<cr>
-
-" vim-smooth-scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-" gv
-nnoremap <leader>g :GV<cr>
-nnoremap <leader>G :GV!<cr>
-nnoremap <leader>gg :GV?<cr>
-
-" 个性化
-if filereadable(expand($HOME . '/.vimrc.local'))
-    source $HOME/.vimrc.local
-endif
-
-if filereadable(expand($HOME . '/.vimrc.pymode'))
-    source $HOME/.vimrc.pymode
-endif
+" leetcode.vim
+let g:leetcode_browser = 'firefox'
+let g:leetcode_china = 0
+let g:leetcode_solution_filetype = 'c'
+nnoremap <Leader>ll :LeetCodeList<cr>
+nnoremap <Leader>lt :LeetCodeTest<cr>
+nnoremap <Leader>ls :LeetCodeSubmit<cr>
+nnoremap <Leader>li :LeetCodeSignIn<cr>

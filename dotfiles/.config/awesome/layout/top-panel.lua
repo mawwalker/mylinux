@@ -54,6 +54,7 @@ local top_panel = function(s)
 	s.screen_rec 			= require('widget.screen-recorder')()
 	s.bluetooth   			= require('widget.bluetooth')()
 	s.battery     			= require('widget.battery')()
+	s.netspeed       		= require('widget.net-speed')()
 	s.network       		= require('widget.network')()
 	s.control_center_toggle = require('widget.control-center-toggle')()
 	s.global_search			= require('widget.global-search')()
@@ -77,6 +78,7 @@ local top_panel = function(s)
 				widget = wibox.container.margin
 			},
 			s.tray_toggler,
+            s.netspeed,
 			s.updater,
 			s.screen_rec,
 			s.network,
