@@ -1,4 +1,8 @@
 " vim-plug plugs
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'rafi/awesome-vim-colorschemes'
@@ -9,55 +13,40 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'lilydjwg/fcitx.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'derekwyatt/vim-fswitch'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'kshenoy/vim-signature'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator'
 Plug 'mhinz/vim-signify'
-Plug 'majutsushi/tagbar'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'mbbill/undotree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-repeat'
 Plug 'puremourning/vimspector'
+Plug 'Yggdroot/indentLine'
+Plug 'liuchengxu/vim-which-key'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'davidhalter/jedi-vim'
+Plug 'tweekmonster/impsort.vim'
 
-
-" python-mode插件
-let g:pymode_lint_ignore = ["E501","E302","E262","E261","E265",]
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-let g:pymode_python = 'python3'
 call plug#end()
 
-" 个性化设置
-"nerdtree 切换tab快捷键
-nnoremap <S-l> gt
-nnoremap <S-h> gT
-" 按下 F2 调出/隐藏 NERDTree
-map <F2> :silent! NERDTreeToggle<CR>
-" 当打开 NERDTree 窗口时，自动显示 Bookmarks
-let NERDTreeShowBookmarks=1
 
+" 个性化设置
 " vimspector 插件配置
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
-
-
 " 设置自动缩进
 set smartindent
-" 括号补全
-""inoremap ' ''<ESC>i
-""inoremap " ""<ESC>i
-""inoremap ( ()<ESC>i
-""inoremap [ []<ESC>i
-""inoremap { {<CR>}<ESC>O
 " *.cpp 和 *.h 间切换
 nmap <silent> <Leader>sw :FSHere<cr>
 " 刷新时间
@@ -76,23 +65,24 @@ set nofoldenable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 set mouse=a
+set hidden
 
-" F5快速运行
-"map <F5> :call CompileRunGcc()<CR>
-"func! CompileRunGcc()
-    "exec "w" 
-    "if &filetype == 'c' 
-        "exec '!g++ % -o %<'
-        "exec '! ./%<'
-    "elseif &filetype == 'cpp'
-        "exec '!g++ % -o %<'
-        "exec '! ./%<'
-    "elseif &filetype == 'python'
-        "exec '!python %'
-    "elseif &filetype == 'sh'
-        ":!bash %
-    "endif                                                                              
-"endfunc 
+" Ctrl + R快速运行
+map <F4> :call CompileRun()<CR>
+func! CompileRun()
+    exec "w" 
+    if &filetype == 'c' 
+        exec '!g++ % -o %<'
+        exec '! ./%<'
+    elseif &filetype == 'cpp'
+        exec '!g++ % -o %<'
+        exec '! ./%<'
+    elseif &filetype == 'python'
+        exec '!python %'
+    elseif &filetype == 'sh'
+        :!bash %
+    endif                                                                              
+endfunc 
 
 " F6编译c/c++并启动gdb调试
 "map <F6> :call CompileDebug()<CR>
@@ -124,7 +114,7 @@ endfunc
 " 主题
 set background=dark
 let g:onedark_termcolors=256
-colorscheme molokai
+colorscheme monokai
 " 定义快捷键的前缀，即<Leader>
 let mapleader=","
 " 开启文件类型侦测
@@ -195,17 +185,6 @@ set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 设置环境保存项
-set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
-" 保存 undo 历史
-set undodir=~/.undo_history/
-set undofile
-" 保存快捷键
-map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
-" 恢复快捷键
-map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
-
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","      " 定义<leader>键
@@ -250,6 +229,12 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 let g:airline_theme="onedark"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+"打开tabline功能,方便查看Buffer和切换，这个功能比较不错"
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"设置切换Buffer快捷键"
+nnoremap <Leader>l :bn<CR>
+nnoremap <Leader>h :bp<CR>
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -259,8 +244,13 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 " nerdtree
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
-inoremap <silent> <leader>n <esc> :NERDTreeToggle<cr>
+"nerdtree 切换tab快捷键
+nnoremap <S-l> gt
+nnoremap <S-h> gT
+nnoremap <silent> <F2> :NERDTreeToggle<cr>
+inoremap <silent> <F2> <esc> :NERDTreeToggle<cr>
+" 当打开 NERDTree 窗口时，自动显示 Bookmarks
+let NERDTreeShowBookmarks=1
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
@@ -268,16 +258,6 @@ let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▷'
 let g:NERDTreeDirArrowCollapsible='▼'
-
-" vim-indent-guides
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-" 色块宽度
-let g:indent_guides_guide_size=1
-" 快捷键 i 开/关缩进可视化
-:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " vim-signature
 let g:SignatureMap = {
@@ -328,12 +308,6 @@ let g:ycm_seed_identifiers_with_syntax=1
 " Tagbar
 map <F3> :TagbarToggle<CR>
 
-" vim-multiple-cursors
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " undotree
 nnoremap <Leader>u :UndotreeToggle<cr>
 
@@ -362,11 +336,50 @@ let g:rainbow_conf = {
 	\	}
 	\}
 
-" leetcode.vim
-let g:leetcode_browser = 'firefox'
-let g:leetcode_china = 0
-let g:leetcode_solution_filetype = 'c'
-nnoremap <Leader>ll :LeetCodeList<cr>
-nnoremap <Leader>lt :LeetCodeTest<cr>
-nnoremap <Leader>ls :LeetCodeSubmit<cr>
-nnoremap <Leader>li :LeetCodeSignIn<cr>
+" vim-which-key
+let g:mapleader = ","
+let g:maplocalleader = ","
+nnoremap <silent> <leader> :WhichKey ','<CR>
+nnoremap <silent> <localleader> :WhichKey ','<CR>
+
+" vim-CtrlSpace
+let g:CtrlSpaceDefaultMappingKey = "<Leader>b"
+nnoremap <silent><C-p> :CtrlSpace O<CR>
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+" ale
+"异步语法检查
+let g:ale_set_highlights = 1
+let python_highlight_all = 1
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_flake8_options = '--max-line-length=100'
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+nmap <Leader>s :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+"使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+\   'c++': ['clang'],
+\   'c': ['clang'],
+\   'python': ['flake8'],
+\}
+
+" jedi-vim
+" 使用tab，而不是buffer
+let g:jedi#use_tabs_not_buffers = 1
+
+" ImpSort
+nnoremap <leader>is :<c-u>ImpSort!<cr>
