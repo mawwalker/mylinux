@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
-Plug 'rafi/awesome-vim-colorschemes'
+Plug 'crusoexia/vim-monokai'
 Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -35,8 +35,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'davidhalter/jedi-vim'
 Plug 'tweekmonster/impsort.vim'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asynctasks.vim'
 
 call plug#end()
 
@@ -67,48 +68,31 @@ set nofoldenable
 set mouse=a
 set hidden
 
-" Ctrl + R快速运行
-map <F4> :call CompileRun()<CR>
-func! CompileRun()
-    exec "w" 
-    if &filetype == 'c' 
-        exec '!g++ % -o %<'
-        exec '! ./%<'
-    elseif &filetype == 'cpp'
-        exec '!g++ % -o %<'
-        exec '! ./%<'
-    elseif &filetype == 'python'
-        exec '!python %'
-    elseif &filetype == 'sh'
-        :!bash %
-    endif                                                                              
-endfunc 
+" F4快速运行
+"map <F4> :call CompileRun()<CR>
+"func! CompileRun()
+    "exec "w" 
+    "if &filetype == 'c' 
+        ":AsyncRun ./%
+    "elseif &filetype == 'cpp'
+        ":AsyncRun ./%
+    "elseif &filetype == 'python'
+        ":AsyncRun -raw -rows=10 python %
+    "elseif &filetype == 'sh'
+        ":!bash %
+    "endif                                                                              
+"endfunc 
 
-" F6编译c/c++并启动gdb调试
-"map <F6> :call CompileDebug()<CR>
+" F7编译c/c++
+"map <F7> :call CompileDebug()<CR>
 "func! CompileDebug()
     "exec "w"
     "if &filetype == 'c'
         "exec '!g++ -g % -o %<'
-        ":packadd termdebug
-        ":Termdebug
     "elseif &filetype == 'cpp'
         "exec '!g++ -g % -o %<'
-        ":packadd termdebug
-        ":Termdebug
     "endif
 "endfunc
-
-" F7编译c/c++
-map <F7> :call CompileDebug()<CR>
-func! CompileDebug()
-    exec "w"
-    if &filetype == 'c'
-        exec '!g++ -g % -o %<'
-    elseif &filetype == 'cpp'
-        exec '!g++ -g % -o %<'
-    endif
-endfunc
 
 
 " 主题
@@ -242,6 +226,8 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:asyncrun_status = ''
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " nerdtree
 "nerdtree 切换tab快捷键
@@ -304,6 +290,14 @@ let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_cache_omnifunc=0
 " 语法关键字补全			
 let g:ycm_seed_identifiers_with_syntax=1
+" 跳转设置
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+
 
 " Tagbar
 map <F3> :TagbarToggle<CR>
@@ -377,9 +371,19 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 
-" jedi-vim
-" 使用tab，而不是buffer
-let g:jedi#use_tabs_not_buffers = 1
-
 " ImpSort
 nnoremap <leader>is :<c-u>ImpSort!<cr>
+
+" AsyncRun
+let g:asyncrun_open = 6
+let g:asyncrun_stdin = 1
+let g:asyncrun_mode = 'term'
+let g:asynctasks_term_pos = 'bottom'
+let g:asynctasks_term_rows = 10
+let g:asynctasks_term_focus = 0
+let $PYTHONNUNBUFFERED=1
+"noremap <F7> :AsyncRun gcc "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENAME)" <cr>
+noremap <silent><F4> :AsyncTask file-run<cr>
+noremap <silent><F7> :AsyncTask file-build<cr>
+
+tnoremap <Esc> <C-\><C-N>
