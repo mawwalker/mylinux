@@ -35,9 +35,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'tweekmonster/impsort.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
 
@@ -387,3 +389,8 @@ noremap <silent><F4> :AsyncTask file-run<cr>
 noremap <silent><F7> :AsyncTask file-build<cr>
 
 tnoremap <Esc> <C-\><C-N>
+
+let g:vim_markdown_math = 1
+let g:mkdp_brower = 'firefox'
+autocmd Filetype markdown noremap ,m :MarkdownPreview<CR>
+autocmd Filetype markdown noremap ,ms :MarkdownPreviewStop<CR>
