@@ -1,0 +1,39 @@
+{
+  "configurations": {
+    "Python: Launch": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Python: Launch",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${fileDirname}",
+        "python": "/home/dsm/anaconda3/envs/yolov5/bin/python3",
+        "stopOnEntry": true,
+        "console": "externalTerminal",
+        "debugOptions": [],
+        "program": "${fileDirname}/${fileBasename}", 
+        "args": ["*${ProgramArgs}"]
+      }
+    },
+    "cpp:launch": {
+       "adapter": "vscode-cpptools",
+       "configuration": {
+         "name": "cpp",
+         "type":    "cppdbg",
+         "request": "launch",
+         "program": "${fileDirname}/${fileBasenameNoExtension}",
+		 // user input args
+		 "args": ["*${ProgramArgs}"],
+         "cwd": "${fileDirname}",
+         "environment": [],
+         "externalConsole": true,
+         "stopAtEntry": true,
+         "MIMode": "gdb",
+         "logging": {
+           "engineLogging": false
+         }
+      }
+    }
+  }
+}
+
