@@ -29,7 +29,6 @@ Plug 'dense-analysis/ale'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-repeat'
 Plug 'puremourning/vimspector'
-Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -37,9 +36,12 @@ Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'lervag/vimtex'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -100,7 +102,7 @@ set hidden
 " 主题
 set background=dark
 let g:onedark_termcolors=256
-colorscheme monokai
+colorscheme dracula
 " 定义快捷键的前缀，即<Leader>
 let mapleader=","
 " 开启文件类型侦测
@@ -390,7 +392,39 @@ noremap <silent><F7> :AsyncTask file-build<cr>
 
 tnoremap <Esc> <C-\><C-N>
 
-let g:vim_markdown_math = 1
-let g:mkdp_brower = 'firefox'
-autocmd Filetype markdown noremap ,m :MarkdownPreview<CR>
-autocmd Filetype markdown noremap ,ms :MarkdownPreviewStop<CR>
+
+" latex
+
+let g:tex_flavor= 'latex'
+
+"使vimtex默认xelatex为编译器
+let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
+let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
+
+"使vimtex默认zathura为pdf阅读器
+"let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_method= 'zathura'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"设置可以看到编译提示
+let g:vimtex_quickfix_mode=0
+
+"两行开启自动隐藏功能,开启了这个功能，除了你光标所在的那一行之外，文本里夹杂的LaTeX代码就都会隐藏或者替换成其他符号
+set conceallevel=1
+let g:tex_conceal= 'abdmg'
+" 正向搜索功能
+"function! SyncTexForward()
+"let linenumber=line(".")
+"let colnumber=col(".")
+"let filename=bufname("%")
+"let filenamePDF=filename[:-4]."pdf"
+"let execstr="!zathura --synctex-forward " . linenumber . ":" . colnumber . ":" . filename . " " . filenamePDF . "&>/dev/null &"
+"exec execstr 
+"endfunction
+"nmap  <leader>s :call SyncTexForward()<cr>
+
+" vim-session
+" Don't save hidden and unload buffers in sessions
+set sessionoptions-=buffers
+let g:session_extension = 'yes'
+let g:session_autosave = 'yes'
+let g:session_autosave_silent = 1
