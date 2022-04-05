@@ -1,17 +1,20 @@
 URxvt.background:	#1F1D19
 URxvt.foreground:	#DEDEDE
-!URxvt.transparent: true
-URxvt.font:			xft:DroidSansMono Nerd Font Mono:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont:		xft:DroidSansMono Nerd Font Mono:bold:pixelsize=14:antialias=true:hinting=true
+URxvt.transparent: true URxvt.shading:10
+URxvt*font: xft:SauceCodePro Nerd Font Mono:Semibold:size=11,xft:WenQuanYi Micro Hei Mono Light: size=11,xft:Font Awesome 5 Free:size=11
+URxvt*boldFont:xft:SauceCodePro Nerd Font Mono:Semibold:size=11,xft:WenQuanYi Micro Hei Mono Light: size=11,xft:Font Awesome 5 Free:size=11
 URxvt.scrollBar:	false
 URxvt.saveLines:	65535
-URxvt.perl-ext-common: keyboard-select,url-select,clipboard
+URxvt.perl-ext-common: default,url-select,clipboard
+!URxvt.perl-ext-common: keyboard-select,url-select,clipboard
+!URxvt.clipboard.autocopy:true
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
 Xft*dpi:       96
 Xft*antialias: True
 Xft*hinting:   Full
