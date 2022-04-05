@@ -425,6 +425,9 @@ let g:tex_conceal= 'abdmg'
 " vim-session
 " Don't save hidden and unload buffers in sessions
 set sessionoptions-=buffers
-let g:session_extension = 'yes'
-let g:session_autosave = 'yes'
+let g:session_autosave = 'no'
 let g:session_autosave_silent = 1
+let g:session_autosave_periodic = 1
+let g:session_directory = './'
+let g:session_default_overwrite = 1
+let g:session_default_name = "vimsession"
