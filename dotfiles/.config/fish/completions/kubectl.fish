@@ -1,0 +1,1 @@
+/home/dsm/.config/fish/completions/fish-kubectl-completions/completions/kubectl.fish

@@ -1,254 +1,261 @@
-#************************************基本设置*******************************************
-#设置基本的工作区和热键(win)
+# Documentation: https://i3wm.org/docs/userguide.html
+# Config created by Key https://www.github.com/keyitdev/dotfiles
+
+# set mod
 set $mod Mod4
-set $WS1  1: 1: 
-set $WS2  2: 2: 
-set $WS3  3: 3: 
-set $WS4  4: 4: 
-set $WS5  5: 5: 
-set $WS6  6: 6: 
-set $WS7  7: 7: 
-set $WS8  8: 8: 
-set $WS9  9: 9: 
-set $WS0 10: 0: 
 
-#背景和文字
-#exec_always --no-startup-id feh --bg-scale "/home/dsm/Pictures/wallpapers/galaxy.jpg"
-font pango:Noto Sans 10
-exec_always --no-startup-id wallpaper
+set $browser google-chrome-stable
+set $file_manager nemo
+set $terminal alacritty
+# set font
+font pango:Open sans 11
 
-#floating模式下按住alt键进行拉拽
-floating_modifier Mod1
+### Runnig apps in background ###
 
-#######一些常见绑定
-#prt sc键进行选择性截屏，并且保存在~/Pictures/shot/目录下
-bindsym Print exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/shot'
-bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/shot/%Y-%m-%d_$wx$h.png'
+# run picom
+exec_always --no-startup-id picom &
 
-#退出当前程序
-bindsym $mod+Shift+q kill
+exec_always --no-startup-id /home/dsm/.screenlayout/dual.sh
 
-#打开nemo文件管理器
-bindsym $mod+n exec nemo
+# render wallpaper for lockscreen
+exec_always betterlockscreen -u ~/Pictures/wallpapers/lockscreen.png --display 1 --span &
 
-#打开chrome
-bindsym $mod+Shift+w exec google-chrome-stable
+# run mpd
+exec_always --no-startup-id mpd &
 
-# firefox
-bindsym $mod+Shift+f exec firefox
+# run dunst
+exec_always --no-startup-id dunst &
 
-# app finder
-bindsym mod1+F2 exec --no-startup-id xfce4-appfinder
+# set wallpaper with fed
+exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_blue.png
 
-#运行dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# launch polybar
+exec_always --no-startup-id killall -q
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#win+enter运行urxvt(透明度为40)
-#bindsym $mod+Return exec urxvt -sh 40
-bindsym $mod+t exec terminator
+# run battery low warning
+exec_always --no-startup-id battery&
 
-#切换到水平模式
-bindsym $mod+b split h
+# start i3 components
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
 
-#切换到垂直模式
-bindsym $mod+v split v
+### Shortcuts ###
 
-#全屏
-bindsym $mod+f fullscreen toggle
+floating_modifier $mod
 
-#切换到floating模式
-bindsym $mod+Shift+space floating toggle
+# start a terminal
+bindsym $mod+Return exec $terminal
 
-#聚焦于浮动模式下的窗口
-bindsym $mod+space focus mode_toggle
+bindsym $mod+e exec $file_manager
+bindsym $mod+Shift+w exec $browser
 
-#聚焦与父布局
-bindsym $mod+a focus parent
+# kill focused window
+bindsym $mod+q kill
 
-#三种模式的切换
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-#重载文件
-bindsym $mod+Shift+c reload
-
-#重启i3
-bindsym $mod+Shift+r restart
-
-#退出i3
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-#显示和隐藏窗口(minus is "-" and plus is "+".)
-bindsym $mod+minus move scratchpad
-bindsym $mod+plus scratchpad show
-
-######一些软件设置
-#开机自起compton
-exec --no-startup-id compton -b
-
-#开机自起fcitx
-exec_always --no-startup-id fcitx
-
-#nemo 等文件管理器挂载磁盘时需要polkit
-exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-#去掉屏保功能，将黑屏等待时间置为100分钟
-exec --no-startup-id xset s 0
-exec --no-startup-id xset dpms 6000 8000 9000
-
-#打开URxvt的同时切换到tab模式
-for_window [class="URxvt"] layout tabbed
-
-#打开软件时自动移至相应工作区
-assign [class="terminator"] $WS1
-assign [class="nemo"] $WS3
-assign [class="google-chrome-stable"] $WS2
-assign [class="Gvim"] $WS4
-#assign [class="VirtualBox"] $WS5
-
-# 特定窗口设为浮动窗口
-for_window [class="MATLAB R2018a"] floating enable
-
-
-#**************************************焦点和窗口移动**************************************
+# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-#****************************************工作区操作**********************************************
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
-bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
-bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace $WS0
+# split in horizontal orientation
+#bindsym $mod+h split h
 
+# split in vertical orientation
+#bindsym $mod+v split v
 
-bindsym $mod+shift+1 move container to workspace $WS1, workspace $WS1
-bindsym $mod+shift+2 move container to workspace $WS2, workspace $WS2
-bindsym $mod+shift+3 move container to workspace $WS3, workspace $WS3
-bindsym $mod+shift+4 move container to workspace $WS4, workspace $WS4
-bindsym $mod+shift+5 move container to workspace $WS5, workspace $WS5
-bindsym $mod+shift+6 move container to workspace $WS6, workspace $WS6
-bindsym $mod+shift+7 move container to workspace $WS7, workspace $WS7
-bindsym $mod+shift+8 move container to workspace $WS8, workspace $WS8
-bindsym $mod+shift+9 move container to workspace $WS9, workspace $WS9
-bindsym $mod+shift+0 move container to workspace $WS0, workspace $WS0
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Ctrl+q layout stacking
+bindsym $mod+Ctrl+w layout tabbed
+bindsym $mod+Ctrl+e layout toggle split
 
-#********************************************更改窗口尺寸**************************************
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# run lockscreen
+bindsym $mod+i exec betterlockscreen -l
+
+# monitor settings
+#bindsym $mod+n exec xrandr --auto --output eDP --mode 1920x1080 --right-of HDMI-A-0 && i3-msg restart &
+#bindsym $mod+m exec xrandr --auto --output HDMI-A-0 --off && i3-msg restart &
+
+# toggle polybar
+bindsym $mod+o exec $HOME/.config/polybar/launch.sh
+bindsym $mod+p exec killall -q polybar
+
+# move workspaces between monitors
+bindsym $mod+b move workspace to output right
+
+# focus the parent container
+#bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# run rofi programs
+bindsym $mod+a exec "rofi -show drun -no-default-config -config ~/.config/rofi/sidebar.rasi"
+bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/center.rasi"
+bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/compact.rasi"
+bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/compact.rasi"
+bindsym $mod+x exec "theme"
+bindsym $mod+c exec "rofi-screenshot"
+
+# take a screenshot
+bindsym Pause exec screenshot -crtf
+bindsym Print exec screenshot -cstf
+
+# brightness control
+exec_always --no-startup-id light -I
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness &
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness &
+
+# audio control
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute &
+#bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
+
+# turn off screen
+bindsym XF86ScreenSaver  exec xset dpms force off
+
+# toggle microphone 
+bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
+bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+
+# toggle touchpad
+bindsym ctrl + F9 exec xinput set-prop 15 "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
+bindsym ctrl + F10 exec xinput set-prop 15 "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
+
+# workspaces names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
 mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
+### BODERS ###
 
-#**************************************************主题设置*********************************************
-# 窗口颜色                边框    背景    文字    提示
-#client.focused          #333333 #333333 #FFFFFF #333333
-#client.focused_inactive #999999 #999999 #FFFFFF #3399FF
-#client.unfocused        #999999 #999999 #FFFFFF #3399FF
+#border width
+default_border pixel 4
 
-client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340                                                                            
-client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
-client.focused          #d9d9d9 #cecece #000000 #d9d9d9 #d9d9d9            
+#border colors
+client.focused #343746 #343746 #F8F8F2 #343746 #343746
+client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
+client.unfocused #343746 #343746 #F8F8F2 #21222C #21222C
 
-client.urgent           #990000 #990000 #FFFFFF #990000
-client.placeholder      #000000 #000000 #FFFFFF #000000
-client.background       #FFFFFF
+### SETTINGS FOR i3 BAR ###
 
-#i3bar设置
 bar {
-    i3bar_command i3bar -t
-    height 28
-    # i3bar调用
-    status_command py3status --dbus-notify
-    #status_command i3status
-    #status_command ~/.config/i3/jconky
-    # 显示位置top/bottom
-    position top
-    # 是否隐藏
-    #mode hide
-    # 拆解工作区名（隐藏前面的1:2:3:……）
-    strip_workspace_numbers yes
-    # 定义分隔符∥
-    separator_symbol "    "
-
-    colors {
-        background #000000
-        statusline #FFFFFF
-        separator  #3399FF
-        # 工作区颜色         边框    背景    文字
-        focused_workspace  #3297FD #11111100 #FFFFFF
-        active_workspace   #FFFFFF #FFFFFF00 #FFFFFF
-        inactive_workspace #111111 #11111100 #FFFFFF
-        urgent_workspace   #990000 #11111100 #FFFFFF
-        binding_mode       #990000 #99000000 #FFFFFF
-    }
+        mode invisible
+        tray_output none
 }
 
-# tray icons(eDP1 is the display device's name,use the command "xrandr" to see.)
-exec --no-startup-id xrandr --output eDP1 --primary
+### SETTINGS FOR i3-gaps ###
 
-#网络图标
-exec_always nm-applet
-
-#电池图标
-exec_always mate-power-manager
-
-#*********************************************电源管理*************************************
-set $mode_system  lock(L) logout(O) reboot(R) shutdown(S) exit(Esc)
-bindsym $mod+c mode "$mode_system"
-mode "$mode_system" {
-	bindsym l exec --no-startup-id i3lock -c '#000000', mode "default"
-	bindsym o exec --no-startup-id i3-msg exit, mode "default"
-	bindsym r exec --no-startup-id systemctl reboot, mode "default"
-	bindsym s exec --no-startup-id systemctl poweroff, mode "default"
-	bindsym Escape mode "default"
-}
-
-
-#********************************************i3-gaps*********************************
-for_window [class="^.*"] border pixel 0
+# Set inner/outer gaps
 gaps inner 8
-gaps outer 6
+gaps outer 0
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+# Press $mod+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $mod+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -256,7 +263,6 @@ mode "$mode_gaps" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 mode "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
@@ -281,48 +287,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
-#音量控制
-## Volume control
-
-# Path to volume control, without trailing slash
-set $volumepath ~/.config/i3/
-
-# Command for the status line (used with -t, requires -u)
-#   ie: i3blocks, i3status
-set $statuscmd i3status
-
-# Signal used to update the status line (used with -u, requires -t)
-#   i3blocks uses SIGRTMIN+10 by default
-#   i3status uses SIGUSR1 by default
-set $statussig SIGUSR1
-
-# Amount to increase/decrease volume as a percentage (used with -i, -d)
-set $volumestep 5
-
-# alsa-utils settings when not using pulseaudio-utils
-#
-# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
-#
-# Card number to control. (used with -a and -c)
-#   If not specified, i3-volume will let `amixer` use a default.
-#   List cards: aplay -l
-#set $alsacard 1
-
-# Uncomment to use alsa-utils (append "-c $alsacard" without quotes to override default card)
-#bindsym XF86AudioRaiseVolume exec $volumepath/volume -anp -i $volumestep -t $statuscmd -u $statussig
-#bindsym XF86AudioLowerVolume exec $volumepath/volume -anp -d $volumestep -t $statuscmd -u $statussig
-#bindsym XF86AudioMute        exec $volumepath/volume -amn -t $statuscmd -u $statussig
-
-# pulseaudio-utils settings when not using alsa-utils
-#
-# Symbolic name for sink (numeric index not supported) (used with -s $sinkname)
-#   Recommended: comment out this setting and omit the -s option to use default sink
-#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
-#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
-
-# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
-bindsym XF86AudioRaiseVolume exec $volumepath/volume -np -i $volumestep -t $statuscmd -u $statussig
-bindsym XF86AudioLowerVolume exec $volumepath/volume -np -d $volumestep -t $statuscmd -u $statussig
-bindsym XF86AudioMute        exec $volumepath/volume -mn -t $statuscmd -u $statussig
