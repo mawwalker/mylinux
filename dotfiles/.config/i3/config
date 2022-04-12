@@ -4,9 +4,9 @@
 # set mod
 set $mod Mod4
 
-set $browser google-chrome-stable
+set $browser firefox
 set $file_manager nemo
-set $terminal alacritty
+set $terminal kitty
 # set font
 font pango:Open sans 11
 
@@ -16,6 +16,7 @@ font pango:Open sans 11
 exec_always --no-startup-id picom &
 
 exec_always --no-startup-id /home/dsm/.screenlayout/dual.sh
+exec_always --no-startup-id fcitx5 &
 
 # render wallpaper for lockscreen
 exec_always betterlockscreen -u ~/Pictures/wallpapers/lockscreen.png --display 1 --span &
@@ -29,6 +30,13 @@ exec_always --no-startup-id dunst &
 # set wallpaper with fed
 exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_blue.png
 
+# TouchPad
+exec --no-startup-id libinput-gestures
+exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Tapping Enabled' 1
+exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Natural Scrolling Enabled' 1
+exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Accel Speed' 0.4
+
+
 # launch polybar
 exec_always --no-startup-id killall -q
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -39,6 +47,7 @@ exec_always --no-startup-id battery&
 # start i3 components
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets &
 
 ### Shortcuts ###
 
@@ -48,7 +57,16 @@ floating_modifier $mod
 bindsym $mod+Return exec $terminal
 
 bindsym $mod+e exec $file_manager
-bindsym $mod+Shift+w exec $browser
+bindsym $mod+Shift+w exec $browser --password-store=gnome
+
+bindsym $mod+minus move scratchpad
+bindsym $mod+Shift+minus scratchpad show
+
+
+# custom shotcuts
+bindsym $mod+Shift+s exec "systemctl poweroff"
+
+
 
 # kill focused window
 bindsym $mod+q kill
@@ -126,8 +144,8 @@ bindsym $mod+x exec "theme"
 bindsym $mod+c exec "rofi-screenshot"
 
 # take a screenshot
-bindsym Pause exec screenshot -crtf
-bindsym Print exec screenshot -cstf
+bindsym Print exec flameshot gui
+bindsym Shift+Print exec flameshot screen -p ~/Pictures/screenshots
 
 # brightness control
 exec_always --no-startup-id light -I
