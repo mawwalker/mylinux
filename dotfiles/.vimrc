@@ -72,32 +72,6 @@ set nofoldenable
 set mouse=a
 set hidden
 
-" F4快速运行
-"map <F4> :call CompileRun()<CR>
-"func! CompileRun()
-    "exec "w" 
-    "if &filetype == 'c' 
-        ":AsyncRun ./%
-    "elseif &filetype == 'cpp'
-        ":AsyncRun ./%
-    "elseif &filetype == 'python'
-        ":AsyncRun -raw -rows=10 python %
-    "elseif &filetype == 'sh'
-        ":!bash %
-    "endif                                                                              
-"endfunc 
-
-" F7编译c/c++
-"map <F7> :call CompileDebug()<CR>
-"func! CompileDebug()
-    "exec "w"
-    "if &filetype == 'c'
-        "exec '!g++ -g % -o %<'
-    "elseif &filetype == 'cpp'
-        "exec '!g++ -g % -o %<'
-    "endif
-"endfunc
-
 
 " 主题
 set background=dark
@@ -275,6 +249,8 @@ let g:SignatureMap = {
         \ }
 
 " YCM
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
@@ -300,7 +276,6 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
-
 
 
 " Tagbar
@@ -386,7 +361,6 @@ let g:asynctasks_term_pos = 'bottom'
 let g:asynctasks_term_rows = 10
 let g:asynctasks_term_focus = 0
 let $PYTHONNUNBUFFERED=1
-"noremap <F7> :AsyncRun gcc "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENAME)" <cr>
 noremap <silent><F4> :AsyncTask file-run<cr>
 noremap <silent><F7> :AsyncTask file-build<cr>
 
@@ -411,16 +385,6 @@ let g:vimtex_quickfix_mode=0
 "两行开启自动隐藏功能,开启了这个功能，除了你光标所在的那一行之外，文本里夹杂的LaTeX代码就都会隐藏或者替换成其他符号
 set conceallevel=1
 let g:tex_conceal= 'abdmg'
-" 正向搜索功能
-"function! SyncTexForward()
-"let linenumber=line(".")
-"let colnumber=col(".")
-"let filename=bufname("%")
-"let filenamePDF=filename[:-4]."pdf"
-"let execstr="!zathura --synctex-forward " . linenumber . ":" . colnumber . ":" . filename . " " . filenamePDF . "&>/dev/null &"
-"exec execstr 
-"endfunction
-"nmap  <leader>s :call SyncTexForward()<cr>
 
 " vim-session
 " Don't save hidden and unload buffers in sessions
