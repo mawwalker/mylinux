@@ -1,4 +1,5 @@
 #!/bin/bash
+# Git script to do something after merge
 md_REPO=/home/git/ziyue.auto/notes
 hexo_dir=/home/git/hexo_notes/source/_posts
 rm -rf ${hexo_dir}/*

@@ -1,6 +1,7 @@
 # Archlinux
 Some usefull configuration in my Archlinux.
 Arch Linux is The Best!
+![screenshots](./Pictures/screenshots/screenshot.png)
 
 ## vimrc
 ```
@@ -11,14 +12,14 @@ Then enter to vim, input this:
 :PlugInstall
 ```
 Wait some mins
-### vimspector plugin settings
+#### vimspector plugin settings
 copy the dotfiles/.vimspector.json to your $HOME path or Your Project Root path.
 Run F5 to start the debug Launcher Just like VsCode.
 See more details at [Vimspector.vim](https://github.com/puremourning/vimspector#installation)
-### asynctask Plugin
+#### asynctask Plugin
 copy the dotfiles/tasks.ini to you ~/.vim/
 see more details at [skywind3000/asynctasks.vim](https://github.com/skywind3000/asynctasks.vim)
-### Latex
+#### Latex
 To use vim with latex, install zathura with your package manager.
 Then copy the directory dotfiles/.config/zathura to your ~/.config/
 
