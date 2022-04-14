@@ -1,5 +1,5 @@
 function get_config(name)
-    return string.format('require("user.user_config.%s")', name)
+  return string.format('require("user.configs.%s")', name)
 end
 
 local config = {
@@ -59,16 +59,15 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      { 'Mofiqul/dracula.nvim', },
-      {"ellisonleao/glow.nvim", branch = 'main'},
-      { 'mfussenegger/nvim-dap',},
-      { 'mfussenegger/nvim-dap-python',
-        require('dap-python').setup('/usr/bin/python'),
-      },
-      { "rcarriga/nvim-dap-ui", 
-        requires = {"mfussenegger/nvim-dap"},
-        config = get_config("dap-ui"),
-      },
+    { 'Mofiqul/dracula.nvim', },
+    {"ellisonleao/glow.nvim", branch = 'main'},
+    { 'mfussenegger/nvim-dap',},      
+    {
+      "rcarriga/nvim-dap-ui",
+      requires = {"mfussenegger/nvim-dap"},
+      config = get_config("dap-ui"),
+    }, 
+
     },
     -- All other entries override the setup() call for default plugins
     treesitter = {
