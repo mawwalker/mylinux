@@ -3,6 +3,24 @@ Some usefull configuration in my Archlinux.
 Arch Linux is The Best!
 ![screenshots](./Pictures/screenshots/screenshot.png)
 
+## i3wm & Polybar
+### Dependencies
+Install the following packages with yay.
+- Base: 
+  base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
+- WM & X11:
+  i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+- Programs:
+  kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm (with qt5 qt5-quickcontrols2 qt5-svg) zsh picom cava code neovim xclip scrot ffcast slop
+- Emoji Fonts: 
+  noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+
+### Optional
+See more packages in arch_install/packages-repo.txt
+
+Then copy the i3, kitty, polybar directories in the dotfiles/.config to your ~/.config.
+Relogin with i3wm. Enjoin it!.
+
 ## vimrc
 ```
 cp dotfiles/.vimrc ~/.vimrc
@@ -11,7 +29,7 @@ Then enter to vim, input this:
 ```
 :PlugInstall
 ```
-Wait some mins
+Wait some minutes until it finished
 #### vimspector plugin settings
 Copy the dotfiles/.vimspector.json to your $HOME path or Your Project Root path.
 Run F5 to start the debug Launcher Just like VsCode.
@@ -19,7 +37,8 @@ See more details at [Vimspector.vim](https://github.com/puremourning/vimspector#
 #### asynctask Plugin
 Copy the dotfiles/tasks.ini to you ~/.vim/
 See more details at [skywind3000/asynctasks.vim](https://github.com/skywind3000/asynctasks.vim)
-#### Latex
+#### For Latex Support
+Install texlive First.
 To use vim with latex, install zathura with your package manager.
 Then copy the directory dotfiles/.config/zathura to your ~/.config/
 
