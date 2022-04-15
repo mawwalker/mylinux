@@ -6,7 +6,7 @@ set $mod Mod4
 
 set $browser firefox
 set $file_manager nemo
-set $terminal kitty
+set $terminal GLFW_IM_MODULE=ibus kitty
 # set font
 font pango:Open sans 11
 
