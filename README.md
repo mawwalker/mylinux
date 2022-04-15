@@ -19,6 +19,7 @@ Install the following packages with yay.
 See more packages in arch_install/packages-repo.txt
 
 Then copy the i3, kitty, polybar directories in the dotfiles/.config to your ~/.config.
+
 **Remeber to change the interface in polybar/modules/network.ini to your network interface. Sometimes you
 need to change the device id in temperature.ini**
 Relogin with i3wm. Enjoin it!.
