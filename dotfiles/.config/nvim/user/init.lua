@@ -59,16 +59,26 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-    { 'Mofiqul/dracula.nvim', },
-    {"ellisonleao/glow.nvim", branch = 'main'},
-    { 'mfussenegger/nvim-dap',},      
-    {
-      "rcarriga/nvim-dap-ui",
-      requires = {"mfussenegger/nvim-dap"},
-      config = get_config("dap-ui"),
-    }, 
+      { 'Mofiqul/dracula.nvim', },
+      {"ellisonleao/glow.nvim", branch = 'main'},
+      { 'mfussenegger/nvim-dap',
+        config = get_config("dap"),
+      },
+      {
+        "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap"},
+        config = get_config("dap-ui"),
+      },   
+      -- {
+      --   'glepnir/dashboard-nvim',
+      --   event = "BufRead",
+      --   config = get_config("dashboard").config,
+      -- },
 
+
+    
     },
+    -- default_plugins["glepnir/dashboard-nvim.lua"]["g.dashboard_custom_header"] = "",
     -- All other entries override the setup() call for default plugins
     treesitter = {
       ensure_installed = { "lua" },
@@ -168,10 +178,33 @@ local config = {
     -- Set options
     set.relativenumber = true
 
+    vim.g.dashboard_custom_header = {
+      " ",
+      "███████╗███╗   ███╗ █████╗ ██████╗ ████████╗",
+      "██╔════╝████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝",
+      "███████╗██╔████╔██║███████║██████╔╝   ██║   ",
+      "╚════██║██║╚██╔╝██║██╔══██║██╔══██╗   ██║   ",
+      "███████║██║ ╚═╝ ██║██║  ██║██║  ██║   ██║   ",
+      "╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ",
+      " ",
+      "    ██████╗ ███████╗███╗   ██╗ ██████╗      ",
+      "    ██╔══██╗██╔════╝████╗  ██║██╔════╝      ",
+      "    ██║  ██║█████╗  ██╔██╗ ██║██║  ███╗     ",
+      "    ██║  ██║██╔══╝  ██║╚██╗██║██║   ██║     ",
+      "    ██████╔╝███████╗██║ ╚████║╚██████╔╝     ",
+      "    ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝      ",
+      " ",
+    }
+    local fn = vim.fn
+    local plugins_count = fn.len(vim.fn.globpath(fn.stdpath "data" .. "/site/pack/packer/start", "*", 0, 1))
+    vim.g.dashboard_custom_footer = {
+      " ",
+      " SmartDeng\'s Nvim loaded " .. plugins_count .. " plugins ",
+    }
+
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
-    vim.g.mapleader = ","
-    -- nnoremap <silent> <F5> : lua require'dap'.continue()<CR>
+    -- vim.g.mapleader = ","
     map("n", "<F5>", ":lua require'dap'.continue()<CR>", opts)
     map("n", "<F10>", ":lua require'dap'.step_over()<CR>", opts)
     map("n", "<F11>", ":lua require'dap'.step_into()<CR>", opts)
