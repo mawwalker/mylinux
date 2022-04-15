@@ -25,7 +25,7 @@ Alpha.config = function()
   }
 
   local fn = vim.fn
-  local plugins_count = fn.len(vim.fn.globpath(fn.stdpath "data" .. "/site/pack/packer/start", "*", 0, 1))
+  local plugins_count = fn.len(vim.fn.globpath(fn.stdpath "data" .. "/../lunarvim/site/pack/packer/start", "*", 0, 1))
   lvim.builtin.alpha.dashboard.section.footer.val = {
     " ",
     " SmartDeng\'s Nvim loaded " .. plugins_count .. " plugins ",
