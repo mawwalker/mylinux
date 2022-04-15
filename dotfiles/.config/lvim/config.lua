@@ -153,6 +153,7 @@ lvim.builtin.dap.active = true
 
 require "plugins"
 require "keymaps"
+require "options"
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
