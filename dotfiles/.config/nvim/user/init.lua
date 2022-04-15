@@ -201,7 +201,7 @@ local config = {
       " ",
       " SmartDeng\'s Nvim loaded " .. plugins_count .. " plugins ",
     }
-
+    set.clipboard=unnamedplus
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
     -- vim.g.mapleader = ","
