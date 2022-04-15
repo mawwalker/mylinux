@@ -52,6 +52,13 @@ To use vim with latex, install zathura with your package manager.
 
 Then copy the directory dotfiles/.config/zathura to your ~/.config/
 
+## For Neovim
+I have migrated from vim to Neovim now.
+
+Configurations files are in dotfiles/.config/nvim for Astrovim, and dotfiles/.config/lvim for LunarVim.
+
+See more details in their Github repo.
+
 ## Urxvt
 Copy dotfiles/.Xresources and dotfiles/.urxvt to Your $HOME path
 
