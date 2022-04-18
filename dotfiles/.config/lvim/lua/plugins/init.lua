@@ -1,7 +1,6 @@
 -- Debug (DAP)
 require("plugins.dap").config()
 require("plugins.alpha").config()
-
 lvim.plugins = {
   {
     "folke/persistence.nvim",
@@ -148,8 +147,8 @@ lvim.plugins = {
   },
 
 
-
-
-
-
 }
+
+lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.matchup.enable = true
