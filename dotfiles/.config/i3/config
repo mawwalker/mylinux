@@ -6,7 +6,7 @@ set $mod Mod4
 
 set $browser firefox
 set $file_manager nemo
-set $terminal GLFW_IM_MODULE=ibus kitty
+set $terminal "GLFW_IM_MODULE=ibus kitty"
 # set font
 font pango:Open sans 11
 
@@ -15,8 +15,13 @@ font pango:Open sans 11
 # run picom
 exec_always --no-startup-id picom &
 
-exec_always --no-startup-id /home/dsm/.screenlayout/dual.sh
+# run ficixt5
 exec_always --no-startup-id fcitx5 &
+
+exec_always --no-startup-id nitrogen --restore &
+
+# exec_always --no-startup-id /home/dsm/.screenlayout/dual.sh
+exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 # render wallpaper for lockscreen
 exec_always betterlockscreen -u ~/Pictures/wallpapers/lockscreen.png --display 1 --span &
@@ -28,14 +33,7 @@ exec_always --no-startup-id mpd &
 exec_always --no-startup-id dunst &
 
 # set wallpaper with fed
-exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_blue.png
-
-# TouchPad
-exec --no-startup-id libinput-gestures
-exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Tapping Enabled' 1
-exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec --no-startup-id xinput set-prop 'UNIW0001:00 093A:0255 Touchpad' 'libinput Accel Speed' 0.4
-
+# exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_blue.png
 
 # launch polybar
 exec_always --no-startup-id killall -q
@@ -47,7 +45,6 @@ exec_always --no-startup-id battery&
 # start i3 components
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets &
 
 ### Shortcuts ###
 
@@ -58,12 +55,12 @@ bindsym $mod+Return exec $terminal
 
 bindsym $mod+e exec $file_manager
 bindsym $mod+Shift+w exec $browser --password-store=gnome
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets &
 
+
+# custom shortcuts
 bindsym $mod+minus move scratchpad
 bindsym $mod+Shift+minus scratchpad show
-
-
-# custom shotcuts
 bindsym $mod+Shift+s exec "systemctl poweroff"
 
 

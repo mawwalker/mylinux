@@ -14,6 +14,8 @@ Install the following packages with yay.
   kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm (with qt5 qt5-quickcontrols2 qt5-svg) zsh picom cava code neovim xclip scrot ffcast slop
 - Emoji Fonts: 
   noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+- For background:
+  nitrogen
 
 ### Optional
 See more packages in arch_install/packages-repo.txt
