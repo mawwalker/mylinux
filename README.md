@@ -28,7 +28,7 @@ Sometimes you need to change the device id in temperature.ini.**
 
 At last, relogin with i3wm. Enjoin it!.
 
-## vimrc
+## Vim OR Neovim
 ```
 cp dotfiles/.vimrc ~/.vimrc
 ```
