@@ -60,6 +60,7 @@ return {
     'mpd',
     'fcitx5',
     'nm-applet',
+    'mate-power-manager',
     -- Polkit and keyring
     '/usr/bin/lxqt-policykit-agent &' ..
         ' eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)',
