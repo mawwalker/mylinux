@@ -1,6 +1,7 @@
 #!/bin/bash
+useradd -m -g users -s /bin/bash dsm
 chmod u+w /etc/sudoers
-echo 'arch ALL=(ALL) ALL' >> /etc/sudoers
+echo 'dsm ALL=(ALL) ALL' >> /etc/sudoers
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc --utc
 echo Archlinux > /etc/hostname

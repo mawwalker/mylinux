@@ -1,5 +1,5 @@
 #!/bin/bash
-pacman --needed -S - < packages-repo.txt
+# pacman --needed -S - < packages-repo.txt
 # su arch && cat packages-aur.txt | xargs yay -S --needed --noconfirm
 # grub theme
 cp -r Cyber-Security /boot/grub/themes/
@@ -10,11 +10,11 @@ mkdir -p /etc/pacman.d/hooks/ && cp nvidia.hook /etc/pacman.d/hooks/ && mkinitcp
 cp xorg.conf /etc/X11/
 
 # lightdm nvidia-prime
-cp display_setup.sh /etc/lightdm/display_setup.sh 
-chmod +x /etc/lightdm/display_setup.sh
-mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
-cp lightdm.conf /etc/lightdm/lightdm.conf
-systemctl enable lightdm
+# cp display_setup.sh /etc/lightdm/display_setup.sh 
+# chmod +x /etc/lightdm/display_setup.sh
+# mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
+# cp lightdm.conf /etc/lightdm/lightdm.conf
+# systemctl enable lightdm
 
 # nvidia prime configuration
 cp nvidia-drm-modeset.conf /etc/modprobe.d/

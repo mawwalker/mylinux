@@ -4,7 +4,6 @@ adobe-source-han-serif-cn-fonts
 alsa-oss
 alsa-plugins
 alsa-utils
-amdvlk
 arandr
 arch-install-scripts
 archlinux-wallpaper
@@ -75,10 +74,6 @@ grub-customizer
 gvim
 gzip
 htop
-i3-gaps
-i3blocks
-i3lock-color
-i3status
 iw
 kanshi
 kitty
@@ -98,14 +93,11 @@ lib32-openal
 lib32-opencl-nvidia
 lib32-v4l-utils
 lib32-vkd3d
-lib32-vulkan-radeon
 libinput-gestures
 libreoffice-fresh
 libreoffice-fresh-zh-cn
 libtool
 light
-lightdm
-lightdm-gtk-greeter
 linux
 linux-firmware
 linux-headers
@@ -146,7 +138,6 @@ noto-fonts-extra
 npm
 ntfs-3g
 ntp
-numix-icon-theme-git
 nvidia
 nvidia-dkms
 nvidia-settings
@@ -243,7 +234,6 @@ vimix-gtk-themes-git
 vkd3d
 vlc
 vulkan-extra-tools
-vulkan-radeon
 w3m
 wallutils
 waybar
@@ -261,7 +251,6 @@ xautolock
 xdg-user-dirs
 xf86-input-evdev
 xf86-input-libinput
-xf86-video-vesa
 xl2tpd
 xlayoutdisplay
 xorg-bdftopcf
