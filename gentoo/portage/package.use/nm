@@ -1,0 +1,4 @@
+net-wireless/wpa_supplicant dbus
+net-misc/openssh -bindist
+net-misc/networkmanager iptables -iwd resolvconf
+# kde-plasma/plasma-nm openconnect modemmanager

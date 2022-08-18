@@ -1,0 +1,1 @@
+x11-drivers/nvidia-drivers X driver static-libs tools -dist-kernel -kernel-open -persistenced wayland

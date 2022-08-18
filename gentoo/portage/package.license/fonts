@@ -1,0 +1,10 @@
+# required by media-fonts/corefonts (argument)
+>=media-fonts/corefonts-1-r7 MSttfEULA
+# required by media-fonts/fonts-meta-2::gentoo[latin]
+# required by media-fonts/fonts-meta (argument)
+>=media-fonts/font-bh-ttf-1.0.3-r2 bh-luxi
+# required by media-fonts/fonts-meta-2::gentoo[cjk]
+# required by media-fonts/fonts-meta (argument)
+>=media-fonts/mikachan-font-otf-9.1-r1 free-noncomm
+
+>=media-fonts/nerd-fonts-2.1.0 Vic-Fieger-License

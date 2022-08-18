@@ -1,0 +1,8 @@
+# required by app-text/calibre-5.44.0-r1::gentoo[python_single_target_python3_10]
+# required by app-text/calibre (argument)
+>=app-accessibility/speech-dispatcher-0.11.1 python
+# required by dev-python/PyQtWebEngine-5.15.5::gentoo
+# required by app-text/calibre-5.44.0-r1::gentoo[python_single_target_python3_10]
+# required by app-text/calibre (argument)
+>=dev-python/PyQt5-5.15.6 webchannel
+

@@ -1,0 +1,3 @@
+kde-apps/kdecore-meta webengine
+kde-apps/kde-apps-meta accessibility admin -education -games graphics multimedia network pim -sdk utils"
+# kde-plasma/kdeplasma-addons webengine
