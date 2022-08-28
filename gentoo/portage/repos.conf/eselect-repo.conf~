@@ -21,7 +21,13 @@ sync-type = git
 sync-uri = https://github.com/gentoo-mirror/benzene-overlay.git
 
 
-[pinkbyte]
-location = /var/db/repos/pinkbyte
+
+[lab-overlay]
+location = /var/db/repos/lab-overlay
 sync-type = git
-sync-uri = https://github.com/gentoo-mirror/pinkbyte.git
+sync-uri = https://github.com/gentoo-mirror/lab-overlay.git
+
+[ssnb]
+location = /var/db/repos/ssnb
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/ssnb.git
