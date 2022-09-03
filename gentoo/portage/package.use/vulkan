@@ -1,0 +1,2 @@
+media-libs/vulkan-loader X layers wayland
+dev-util/vulkan-tools X cube -wayland

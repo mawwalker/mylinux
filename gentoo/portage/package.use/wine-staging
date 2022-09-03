@@ -1,0 +1,1 @@
+app-emulation/wine-staging X alsa capi -crossdev-mingw cups custom-cflags dos fontconfig gecko gphoto2 gssapi gstreamer kerberos ldap mingw mono mp3 netapi nls odbc openal opencl opengl osmesa -oss pcap perl pipelight pulseaudio realtime run-exes samba scanner sdl selinux ssl staging test threads truetype udev udisks unwind usb v4l vulkan xcomposite xinerama

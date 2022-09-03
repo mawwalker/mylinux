@@ -1,0 +1,13 @@
+app-emulation/wine-vanilla X alsa cups fontconfig gecko mono mp3 nls opengl perl pulseaudio realtime run-exes sdl ssl threads truetype udev udisks unwind usb xcomposite capi -crossdev-mingw custom-cflags dos gphoto2 gstreamer kerberos ldap -mingw netapi odbc openal opencl osmesa -oss pcap samba scanner selinux test v4l vulkan xinerama
+
+
+# required by app-emulation/wine-vanilla-7.16::gentoo[samba]
+# required by virtual/wine-0-r7::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-fs/samba-4.16.4 winbind
+# required by app-emulation/wine-vanilla-7.16::gentoo[test]
+# required by virtual/wine-0-r7::gentoo
+# required by @selected
+# required by @world (argument)
+>=x11-base/xorg-server-21.1.4 xvfb
