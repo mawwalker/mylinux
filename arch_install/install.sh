@@ -2,12 +2,12 @@
 # pacman --needed -S - < packages-repo.txt
 # su arch && cat packages-aur.txt | xargs yay -S --needed --noconfirm
 # grub theme
-cp -r Cyber-Security /boot/grub/themes/
+ cp -r Cyber-Security /boot/grub/themes/
 mv /etc/default/grub /etc/default/grub.bak && cp grub /etc/default/
 grub-mkconfig -o /boot/grub/grub.cfg
 # nvidia-pacman hook
 mkdir -p /etc/pacman.d/hooks/ && cp nvidia.hook /etc/pacman.d/hooks/ && mkinitcpio -P
-cp xorg.conf /etc/X11/
+# cp xorg.conf /etc/X11/
 
 # lightdm nvidia-prime
 # cp display_setup.sh /etc/lightdm/display_setup.sh 

@@ -6,14 +6,12 @@ dracula-gtk-theme
 extundelete
 google-chrome
 i3lock-fancy-git
-kipi-plugins
 nerd-fonts-bitstream-vera-mono
 ocs-url
 qqmusic-bin
 sweet-folders-icons-git
 sweet-kde-theme-git
 sweet-theme-full-git
-texlive-full
 ttf-all-the-icons
 ttf-font-awesome-5
 ttf-ms-fonts
