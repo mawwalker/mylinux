@@ -5,11 +5,6 @@ location = /var/db/repos/gentoo-zh
 sync-type = git
 sync-uri = https://github.com/gentoo-mirror/gentoo-zh.git
 
-[ryans]
-location = /var/db/repos/ryans
-sync-type = git
-sync-uri = https://github.com/gentoo-mirror/ryans.git
-
 [steam-overlay]
 location = /var/db/repos/steam-overlay
 sync-type = git
@@ -27,7 +22,19 @@ location = /var/db/repos/lab-overlay
 sync-type = git
 sync-uri = https://github.com/gentoo-mirror/lab-overlay.git
 
-[ssnb]
-location = /var/db/repos/ssnb
+
+[guru]
+location = /var/db/repos/guru
 sync-type = git
-sync-uri = https://github.com/gentoo-mirror/ssnb.git
+sync-uri = https://github.com/gentoo-mirror/guru.git
+
+[torbrowser]
+location = /var/db/repos/torbrowser
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/torbrowser.git
+
+
+[ryans]
+location = /var/db/repos/ryans
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/ryans.git

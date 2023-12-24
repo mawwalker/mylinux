@@ -1,3 +1,3 @@
-app-text/texlive X png truetype xml cjk context extra games graphics humanities luatex metapost music pstricks publishers science tex4ht texi2html xetex
+app-text/texlive X png truetype xml cjk context extra games graphics humanities luatex metapost music pstricks publishers science tex4ht texi2html xetex L10N: zh en
 
 >=app-text/texlive-core-2021-r1 cjk xetex

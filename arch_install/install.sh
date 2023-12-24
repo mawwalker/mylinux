@@ -16,6 +16,10 @@ mkdir -p /etc/pacman.d/hooks/ && cp nvidia.hook /etc/pacman.d/hooks/ && mkinitcp
 # cp lightdm.conf /etc/lightdm/lightdm.conf
 # systemctl enable lightdm
 
+cp Xsetup /usr/share/sddm/scripts/Xsetup
+chmod +x /usr/share/sddm/scripts/Xsetup
+systemctl enable sddm
+
 # nvidia prime configuration
 cp nvidia-drm-modeset.conf /etc/modprobe.d/
 mv /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak && cp mkinitcpio.conf /etc/

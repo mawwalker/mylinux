@@ -1,1 +1,1 @@
-media-libs/mesa X gles2 llvm osmesa wayland zstd -d3d9 -debug gles1 lm-sensors opencl -selinux -test unwind vaapi valgrind vdpau vulkan vulkan-overlay xa xvmc zink
+media-libs/mesa X gles2 llvm osmesa wayland zstd -d3d9 -debug gles1 lm-sensors opencl -selinux -test unwind vaapi valgrind vdpau -vulkan -vulkan-overlay xa xvmc -zink

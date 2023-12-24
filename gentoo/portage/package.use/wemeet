@@ -1,0 +1,12 @@
+# required by net-im/wemeet-3.10.0.400::benzene-overlay[-bundled-libs]
+# required by @selected
+# required by @world (argument)
+>=media-sound/pulseaudio-daemon-16.1 tcpd zeroconf
+# required by net-im/wemeet-3.10.0.400::benzene-overlay[-bundled-qt]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtgui-5.15.5-r2 eglfs vnc linuxfb
+# required by net-im/wemeet-3.10.0.400::benzene-overlay[-bundled-qt]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtnetwork-5.15.5 connman

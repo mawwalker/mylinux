@@ -1,0 +1,4 @@
+# required by www-client/torbrowser-102.6.0_p12001::torbrowser[system-libvpx]
+# required by www-client/torbrowser (argument)
+>=media-libs/libvpx-1.12.0-r1 postproc
+>=app-crypt/gpgme-1.18.0-r2 python
