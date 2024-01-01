@@ -1,44 +1,34 @@
+---@type MappingsTable
 local M = {}
 
-M.disabled = {
+M.general = {
   n = {
-    ["<leader>es"] = "",
-  }
+    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["<leader>q"] = { ":qa<CR>", "Quit all", opts = { nowait = true } },
+    ["<leader>c"] = { ":bd<CR>", "Close Buffer", opts = { nowait = true } },
+    ["<leader>e"] = { ":NvimTreeToggle<CR>", "Toggle NvimTree", opts = { nowait = true } },
+    ["<leader>ww"] = { ":w<CR>", "Write", opts = { nowait = true } },
+  },
 }
 
-M.abc = {
+-- more keybinds!
 
+M.debug = {
   n = {
-     ["<C-n>"] = {"<cmd> Telescope <CR>", "Open Telescope"},
-     ["<leader>q"] = {"<cmd> q <CR>", "Quit nvim"},
-     ["<leader>ww"] = {"<cmd> w <CR>", "Write file"}
+     ['<F5>'] = { ":lua require'dap'.continue()<CR>" , "Debug continue"},
+     ['<leader>dc'] = { ":lua require'dap'.continue()<CR>" , "Debug continue"},
+     ['<F10>'] = { ":lua require'dap'.step_over()<CR>" , "step over"},
+     ['<F11>'] = { ":lua require'dap'.step_into()<CR>" , "step into"},
+     ['<F12>'] = { ":lua require'dap'.step_out()<CR>" , "step out"},
+     ['<leader>B'] = { ":lua require'dap'.toggle_breakpoint()<CR>" , "toggle breakpoint"},
   }
-
-}
-
-M.nvimtree = {
-   n = {
-      ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-   },
 }
 
 M.persistence = {
   n = {
-    ["<leader>Ss"] = { "<cmd>lua require('persistence').load()<cr>" , "Store Current directory session"},
-    ["<leader>Sl"] = { "<cmd>lua require('persistence').load({ last = true })<cr>" , "Load last"},
-    ["<leader>Sd"] = { "<cmd>lua require('persistence').stop()<cr>" , 'quit without session save'},
-  }
-}
-
-M.dap = {
-  n = {
-    ["<leader>db"] = { "<cmd> lua require'dap'.toggle_breakpoint()<CR>", "Dap toggle breakpoint" },
-    ["<leader>dc"] = {"<cmd> lua require'dap'.continue()<CR>", "Dap continue"},
-    ["<leader>dd"] = {"<cmd> lua require'dap'.disconnect()<CR>", "Dap session terminate"},
-    ["<F5>"] = {"<cmd> lua require'dap'.continue()<CR>", "Dap continue"},
-    ["<F6>"] = { "<cmd> lua require'dap'.toggle_breakpoint()<CR>", "Dap toggle breakpoint" },
-    ["<F9>"] = {"<cmd> lua require'dap'.step_over()<CR>", "Dap step_over"},
-    ["<F10>"] = {"<cmd> lua require'dap'.step_into()<CR>", "Dap step_into"},
+  ['<leader>Sc'] = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+  ['<leader>Sl'] = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+  ['<leader>SQ'] = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" }
   }
 }
 
