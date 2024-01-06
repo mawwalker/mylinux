@@ -1,0 +1,13 @@
+services:
+  nginx:
+    container_name: blog 
+    image: nginx
+    restart: always
+    volumes:
+      - /root/smartdeng/hexo.conf:/etc/nginx/conf.d/hexo.conf
+      - /root/smartdeng/hexo_blog:/var/www/hexo
+    networks:
+      - nginx-proxy
+networks:
+  nginx-proxy:
+    external: true

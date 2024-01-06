@@ -1,0 +1,16 @@
+version: '3'
+services:
+  twikoo:
+    image: imaegoo/twikoo
+    container_name: twikoo
+    restart: unless-stopped
+    environment:
+      TWIKOO_THROTTLE: 1000
+    volumes:
+      - ./data:/app/data
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external: true

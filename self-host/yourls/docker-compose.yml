@@ -1,0 +1,35 @@
+version: '3.1'
+services:
+  app:
+    image: yourls
+    container_name: yourls
+    restart: always
+    expose:
+      - 80
+    environment:
+      - YOURLS_DB_HOST=db
+      - YOURLS_DB_NAME=yourls
+      - YOURLS_DB_USER=yourls
+      - YOURLS_DB_PASS=pass
+      - YOURLS_SITE=http://url.smartdeng.com
+      - YOURLS_USER=smartdeng
+      - YOURLS_PASS=pass
+    networks:
+      nginx-proxy:
+      yourls:
+  db:
+    image: mariadb
+    container_name: yourls-mysql
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_PASSWORD=pass
+      - MYSQL_DATABASE=yourls
+      - MYSQL_USER=yourls
+    networks:
+      yourls:
+networks:
+    nginx-proxy:
+      external: true
+    yourls:
