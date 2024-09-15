@@ -1,1 +1,6 @@
->=media-video/ffmpeg-4.4.3 libass
+# required by kde-apps/kdenlive-24.08.1::gentoo
+# required by kde-apps/kdemultimedia-meta-24.08.1::gentoo
+# required by kde-apps/kde-apps-meta-24.08.1::gentoo[multimedia]
+# required by @selected
+# required by @world (argument)
+>=media-video/ffmpeg-6.1.2 libass

@@ -1,0 +1,4 @@
+# required by sys-kernel/installkernel-48-r1::gentoo[systemd-boot,dracut,-uki]
+# required by @selected
+# required by @world (argument)
+>=sys-apps/systemd-256.5 boot
